@@ -20,18 +20,28 @@ struct V_SlideCardStack: View {
     var body: some View {
         NavigationView {
             VStack {
-                V_SlideCard(quiz: quizByCategory[quizIndex])
-                
-                Button("Next Quiz") {
-                    quizIndex < quizByCategory.count-1 ? (quizIndex += 1) : (quizIndex = 0)
+                TabView {
+                    ForEach(quizByCategory) { quiz in
+                        V_SlideCard(quiz: quiz)
+                    }
                 }
+                .tabViewStyle(.page(indexDisplayMode: .automatic))
+                .indexViewStyle(.page(backgroundDisplayMode: .never))
             }
-        } .navigationTitle("\(category)")
+        }.navigationTitle("\(category)")
+            .cornerRadius(12)
+            .shadow(radius: 6)
+            .padding()
+        
     }
 }
 
 struct V_SlideCardStack_Previews: PreviewProvider {
     static var previews: some View {
-        V_SlideCardStack(category: "1: variables")
+        V_SlideCardStack(category: "2: Variables")
     }
 }
+
+//                Button("Next Quiz") {
+//                    quizIndex < quizByCategory.count-1 ? (quizIndex += 1) : (quizIndex = 0)
+//                }

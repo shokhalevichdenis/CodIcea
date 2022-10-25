@@ -16,6 +16,8 @@ struct V_SlideCard: View {
             Text(quiz.question)
                 .padding(.init(top: 0, leading: 0, bottom: 20, trailing: 0))
             
+            Spacer()
+            
             VStack(alignment: .leading){
                 
                 ForEach(quiz.answers) { answer in
@@ -28,19 +30,20 @@ struct V_SlideCard: View {
                             .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
                             .frame(maxWidth:.infinity, alignment: .leading)
                             .background(.white)
-                            .border(.yellow)
+                            .border(.gray, width: 0.5)
                             .cornerRadius(12)
+                            .shadow(radius: 5)
                     }
                 }
             }
             .font(.body)
             .foregroundColor(.black)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.init(top: 0, leading: 0, bottom: 30, trailing: 0))
             
-            Spacer()
         }
         .padding()
-        .background(.gray)
+        .background(Color.blue)
         
     }
 }
