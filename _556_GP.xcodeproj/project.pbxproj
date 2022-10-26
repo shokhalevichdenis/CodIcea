@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB18944C2908E97B00D0C421 /* C_Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18944B2908E97B00D0C421 /* C_Main.swift */; };
 		AB944E9C28F24113002C3DDA /* _556_GPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944E9B28F24113002C3DDA /* _556_GPApp.swift */; };
 		AB944E9E28F24113002C3DDA /* V_QuizList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944E9D28F24113002C3DDA /* V_QuizList.swift */; };
 		AB944EA028F24114002C3DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB944E9F28F24114002C3DDA /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB18944B2908E97B00D0C421 /* C_Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C_Main.swift; sourceTree = "<group>"; };
 		AB944E9828F24113002C3DDA /* 556_GP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 556_GP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB944E9B28F24113002C3DDA /* _556_GPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _556_GPApp.swift; sourceTree = "<group>"; };
 		AB944E9D28F24113002C3DDA /* V_QuizList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_QuizList.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				AB944E9B28F24113002C3DDA /* _556_GPApp.swift */,
+				AB18944B2908E97B00D0C421 /* C_Main.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				AB944EC628F2415F002C3DDA /* V_QuizItem.swift in Sources */,
 				AB944E9E28F24113002C3DDA /* V_QuizList.swift in Sources */,
 				AB944E9C28F24113002C3DDA /* _556_GPApp.swift in Sources */,
+				AB18944C2908E97B00D0C421 /* C_Main.swift in Sources */,
 				AB944ED428F24B45002C3DDA /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

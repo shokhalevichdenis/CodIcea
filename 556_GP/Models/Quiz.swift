@@ -20,7 +20,7 @@ struct Quiz: Hashable, Codable, Identifiable {
     var isAnswered: Bool
     var isFavorite: Bool
     var question: String
-    var correctAnswer: String
+    var correctAnswer: Int
     
     private var imageName: String
     var image: Image {
