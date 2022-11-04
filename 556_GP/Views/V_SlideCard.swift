@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct V_SlideCard: View {
-//    @EnvironmentObject var modelData: ModelData
     var quiz: Quiz
-    @State private var answerCorrect: Int = 0
+    @State var pressedButton: Int = 0
+    @State var check: Int = 0
+// TODO: Check APIs
     var body: some View {
         
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(quiz.question)
                 .padding(.init(top: 0, leading: 0, bottom: 20, trailing: 0))
             
@@ -23,17 +24,16 @@ struct V_SlideCard: View {
                 
                 ForEach(quiz.answers) { answer in
                     Button(action: {
-                        guard answerCorrect == 0 else {return}
-                        answer.id == quiz.correctAnswer ? (answerCorrect = answer.id) : (answerCorrect = 9)
-//                    TODO: ADD an image overlay instead of changing color of the buttons 
+                        pressedButton = answer.id
+                        check = 1
                     })
                     {
                         Text(answer.answer)
                             .multilineTextAlignment(.leading)
                             .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
                             .frame(maxWidth:.infinity, alignment: .leading)
-                            .background(answerCorrect == answer.id ? Color.green : setColor(answerCorrect, answer.id))
-                            .border(.gray, width: 0.5)
+                            .background(setColor(quiz.correctAnswer, answer.id, pressedButton, check))
+                            .border(.gray, width: 0.3)
                             .cornerRadius(12)
                             .shadow(radius: 5)
                     }

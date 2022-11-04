@@ -8,7 +8,9 @@
 import SwiftUI
 
 var set: Set<String> = []
-func uniCat() -> Array<String> {
+
+// Filters unique categories and puts them into an array.
+func uniqueCategory() -> Array<String> {
 
     for each in quizzes {
         set.insert(each.category)
@@ -17,12 +19,13 @@ func uniCat() -> Array<String> {
     return Array(set).sorted()
 }
 
+// Displays categories of the quizzes
 struct V_QuizList: View {
 
     var body: some View {
         NavigationView {
             
-            List(uniCat(), id: \.self){cat in
+            List(uniqueCategory(), id: \.self){cat in
                 NavigationLink {
                     V_SlideCardStack(category: cat)
                 } label: {
