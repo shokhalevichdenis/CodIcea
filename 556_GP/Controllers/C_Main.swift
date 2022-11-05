@@ -8,11 +8,11 @@
 import Foundation
 import SwiftUI
 
-func setColor(_ answerCorrect: Int, _ answerId: Int, _ pressedButton: Int, _ check: Int) -> Color {
+func setColor(_ answerCorrect: Int, _ answerId: Int, _ pressedButton: Int) -> Color {
     
     var buttonColor: Color = .white
     
-    if (answerId == pressedButton && check == 1) {
+    if (answerId == pressedButton) {
         if answerCorrect == answerId {
             buttonColor = .green
         }
@@ -24,5 +24,6 @@ func setColor(_ answerCorrect: Int, _ answerId: Int, _ pressedButton: Int, _ che
     }
     return buttonColor
 }
+
 
 

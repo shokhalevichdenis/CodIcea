@@ -2,49 +2,68 @@
 //  V_Splash.swift
 //  556_GP
 //
-//  View of the quiz cards withing a category
+//  View of the quiz questions withing a category
 //
 
 import SwiftUI
 
 struct V_SlideCardStack: View {
-    @State private var quizIndex = 0
-    @State private var width = 0
+    @State private var iterator: Int = 0
+    @State private var questionIndex: Int = 0
+    @State var progressWidth = 0.0
     @State var category: String
     @State var pressedButton: Int = 0
     
-    // Filtering quizzes to display only those with the passed category
+    // Filtering questions by the passed category
     var quizByCategory: [Quiz] {
-        quizzes.filter { quiz in
-            (category == quiz.category)
+        quizzes.filter { question in
+            (category == question.category)
         }
     }
     
     var body: some View {
-        VStack(spacing: 0){
-            NavigationView {
-                VStack(spacing: 0){
-                    V_SlideCard(quiz: quizByCategory[quizIndex], check: 1)
-                    
-                    Path{ path in
-                        path.move(to: CGPoint(x: 0, y: 10))
-                        path.addLine(to: CGPoint(x: width, y: 10))
+        GeometryReader {geometry in
+            VStack(spacing: 0){
+                NavigationStack {
+                    VStack(spacing: 0){
+                        // Displaying questions
+                        TabView(selection: $iterator) {
+                            ForEach(quizByCategory) { question in
+                                V_SlideCard(question: question, pressedButton: self.$pressedButton)
+                            }
+                        }
+                        .animation(.easeInOut, value: iterator)
+                        .tabViewStyle(.page(indexDisplayMode: .never))
+                        .onAppear{
+                            // Assigning initial value to iterator
+                            iterator = quizByCategory[questionIndex].id
+                            progressWidth += (Double(geometry.size.width-20) / (Double(quizByCategory.count)))
+                        }                        
+                        // Drawing progress bar
+                        Path{ path in
+                            path.move(to: CGPoint(x: 0, y: 10))
+                            path.addLine(to: CGPoint(x: progressWidth, y: 10))
+                        }
+                        .stroke(Color.blue, lineWidth: 20).background(.gray)
+                        .frame(height: 20)
+                        .cornerRadius(12)
                     }
-                    .stroke(Color.green, lineWidth: 20).background(.gray)
-                    .frame(height: 20)
+                    .padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
+                    
                 }
-                .cornerRadius(12)
-                .shadow(radius: 6)
-                .padding()
-            }.navigationTitle("\(category)")
-
-            Button("Next Quiz") {
-                // Next question
-                quizIndex < quizByCategory.count-1 ? (quizIndex += 1) : (quizIndex = 0)
-                // Fill progress bar
-                width += (360 / quizByCategory.count)
-                // Reset color
-                pressedButton = 0
+                .navigationTitle("\(category)")
+                .navigationBarTitleDisplayMode(.inline)
+                
+                Button("Pass this question") {
+                    // Iterating through questions
+                    questionIndex < (quizByCategory.count - 1) ? (questionIndex += 1) : (questionIndex = quizByCategory.count - 1)
+                    // Assigning questions' ids so TabView selector can safely iterate through them
+                    iterator = quizByCategory[questionIndex].id
+                    // Filling the progress bar
+                    progressWidth += (Double(geometry.size.width-20) / (Double(quizByCategory.count)))
+                    // Reset color for the next question
+                    pressedButton = 0
+                }
             }
         }
     }

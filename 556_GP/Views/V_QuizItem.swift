@@ -2,7 +2,7 @@
 //  V_Layout.swift
 //  556_GP
 //
-//  View of a single category item in the list
+//  Single category item for a list
 //
 
 import SwiftUI
