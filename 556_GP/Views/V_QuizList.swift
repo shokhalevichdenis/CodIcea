@@ -6,25 +6,17 @@
 //
 
 import SwiftUI
+// Filtering questions by the passed category
 
-// Set for storing unique categories
-var set: Set<String> = []
-
-// Filters unique categories and puts them into an array.
-func uniqueCategory() -> Array<String> {
-    for question in quizzes {
-        set.insert(question.category)
-    }
-    return Array(set).sorted()
-}
 
 // Displays categories of the quizzes in a list
 struct V_QuizList: View {
+    
     var body: some View {
         NavigationStack {
             List(uniqueCategory(), id: \.self){category in
                 NavigationLink {
-                    V_SlideCardStack(category: category)
+                    V_SlideCardStack(quiz: quizByValue(category), title: category)
                 } label: {
                     V_QuizItem(category: category)
                 }
@@ -37,5 +29,6 @@ struct V_QuizList: View {
 struct V_QuizList_Previews: PreviewProvider {
     static var previews: some View {
         V_QuizList()
+            .environmentObject(QuizViewModel())
     }
 }

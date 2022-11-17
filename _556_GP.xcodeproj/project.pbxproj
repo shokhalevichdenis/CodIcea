@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB18944C2908E97B00D0C421 /* C_Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18944B2908E97B00D0C421 /* C_Main.swift */; };
+		AB18944C2908E97B00D0C421 /* F_Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18944B2908E97B00D0C421 /* F_Main.swift */; };
+		AB2D029F2925D39200743FBE /* V_MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2D029E2925D39200743FBE /* V_MainPage.swift */; };
+		AB2D02A22925DFCC00743FBE /* V_ReusableUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2D02A12925DFCC00743FBE /* V_ReusableUI.swift */; };
+		AB3044F72925C981002B70DD /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3044F62925C981002B70DD /* QuizViewModel.swift */; };
 		AB944E9C28F24113002C3DDA /* _556_GPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944E9B28F24113002C3DDA /* _556_GPApp.swift */; };
 		AB944E9E28F24113002C3DDA /* V_QuizList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944E9D28F24113002C3DDA /* V_QuizList.swift */; };
 		AB944EA028F24114002C3DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB944E9F28F24114002C3DDA /* Assets.xcassets */; };
@@ -15,12 +18,10 @@
 		AB944EAD28F24115002C3DDA /* _556_GPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944EAC28F24115002C3DDA /* _556_GPTests.swift */; };
 		AB944EB728F24115002C3DDA /* _556_GPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944EB628F24115002C3DDA /* _556_GPUITests.swift */; };
 		AB944EB928F24115002C3DDA /* _556_GPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944EB828F24115002C3DDA /* _556_GPUITestsLaunchTests.swift */; };
-		AB944EC628F2415F002C3DDA /* V_QuizItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944EC528F2415F002C3DDA /* V_QuizItem.swift */; };
-		AB944EC828F2417C002C3DDA /* V_SlideCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944EC728F2417B002C3DDA /* V_SlideCard.swift */; };
 		AB944ECA28F24205002C3DDA /* V_SlideCardStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944EC928F24205002C3DDA /* V_SlideCardStack.swift */; };
 		AB944ED028F24503002C3DDA /* quizzesData.json in Resources */ = {isa = PBXBuildFile; fileRef = AB944ECF28F24503002C3DDA /* quizzesData.json */; };
 		AB944ED228F24743002C3DDA /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944ED128F24743002C3DDA /* Quiz.swift */; };
-		AB944ED428F24B45002C3DDA /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944ED328F24B45002C3DDA /* ModelData.swift */; };
+		ABBA4AF6291B848100F4B1D4 /* V_SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA4AF5291B848100F4B1D4 /* V_SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AB18944B2908E97B00D0C421 /* C_Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C_Main.swift; sourceTree = "<group>"; };
+		AB18944B2908E97B00D0C421 /* F_Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F_Main.swift; sourceTree = "<group>"; };
+		AB2D029E2925D39200743FBE /* V_MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_MainPage.swift; sourceTree = "<group>"; };
+		AB2D02A12925DFCC00743FBE /* V_ReusableUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_ReusableUI.swift; sourceTree = "<group>"; };
+		AB3044F62925C981002B70DD /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		AB944E9828F24113002C3DDA /* 556_GP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 556_GP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB944E9B28F24113002C3DDA /* _556_GPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _556_GPApp.swift; sourceTree = "<group>"; };
 		AB944E9D28F24113002C3DDA /* V_QuizList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_QuizList.swift; sourceTree = "<group>"; };
@@ -52,12 +56,10 @@
 		AB944EB228F24115002C3DDA /* 556_GPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 556_GPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB944EB628F24115002C3DDA /* _556_GPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _556_GPUITests.swift; sourceTree = "<group>"; };
 		AB944EB828F24115002C3DDA /* _556_GPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _556_GPUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AB944EC528F2415F002C3DDA /* V_QuizItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_QuizItem.swift; sourceTree = "<group>"; };
-		AB944EC728F2417B002C3DDA /* V_SlideCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_SlideCard.swift; sourceTree = "<group>"; };
 		AB944EC928F24205002C3DDA /* V_SlideCardStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_SlideCardStack.swift; sourceTree = "<group>"; };
 		AB944ECF28F24503002C3DDA /* quizzesData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizzesData.json; sourceTree = "<group>"; };
 		AB944ED128F24743002C3DDA /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
-		AB944ED328F24B45002C3DDA /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		ABBA4AF5291B848100F4B1D4 /* V_SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB2D02A02925DF9B00743FBE /* ViewsMinorReusableUI */ = {
+			isa = PBXGroup;
+			children = (
+				AB2D02A12925DFCC00743FBE /* V_ReusableUI.swift */,
+			);
+			path = ViewsMinorReusableUI;
+			sourceTree = "<group>";
+		};
 		AB944E8F28F24112002C3DDA = {
 			isa = PBXGroup;
 			children = (
@@ -108,9 +118,11 @@
 		AB944E9A28F24113002C3DDA /* 556_GP */ = {
 			isa = PBXGroup;
 			children = (
+				AB944E9B28F24113002C3DDA /* _556_GPApp.swift */,
 				AB944ECE28F244E0002C3DDA /* Resources */,
-				AB944ECD28F24415002C3DDA /* Controllers */,
+				AB944ECD28F24415002C3DDA /* Functions */,
 				AB944ECB28F243F7002C3DDA /* Views */,
+				AB2D02A02925DF9B00743FBE /* ViewsMinorReusableUI */,
 				AB944ECC28F24407002C3DDA /* Models */,
 				AB944E9F28F24114002C3DDA /* Assets.xcassets */,
 				AB944EA128F24114002C3DDA /* Preview Content */,
@@ -146,10 +158,10 @@
 		AB944ECB28F243F7002C3DDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AB2D029E2925D39200743FBE /* V_MainPage.swift */,
 				AB944E9D28F24113002C3DDA /* V_QuizList.swift */,
-				AB944EC528F2415F002C3DDA /* V_QuizItem.swift */,
 				AB944EC928F24205002C3DDA /* V_SlideCardStack.swift */,
-				AB944EC728F2417B002C3DDA /* V_SlideCard.swift */,
+				ABBA4AF5291B848100F4B1D4 /* V_SplashScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,19 +169,18 @@
 		AB944ECC28F24407002C3DDA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AB944ED328F24B45002C3DDA /* ModelData.swift */,
 				AB944ED128F24743002C3DDA /* Quiz.swift */,
+				AB3044F62925C981002B70DD /* QuizViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		AB944ECD28F24415002C3DDA /* Controllers */ = {
+		AB944ECD28F24415002C3DDA /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				AB944E9B28F24113002C3DDA /* _556_GPApp.swift */,
-				AB18944B2908E97B00D0C421 /* C_Main.swift */,
+				AB18944B2908E97B00D0C421 /* F_Main.swift */,
 			);
-			path = Controllers;
+			path = Functions;
 			sourceTree = "<group>";
 		};
 		AB944ECE28F244E0002C3DDA /* Resources */ = {
@@ -311,14 +322,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB944EC828F2417C002C3DDA /* V_SlideCard.swift in Sources */,
 				AB944ECA28F24205002C3DDA /* V_SlideCardStack.swift in Sources */,
+				AB2D02A22925DFCC00743FBE /* V_ReusableUI.swift in Sources */,
 				AB944ED228F24743002C3DDA /* Quiz.swift in Sources */,
-				AB944EC628F2415F002C3DDA /* V_QuizItem.swift in Sources */,
+				AB3044F72925C981002B70DD /* QuizViewModel.swift in Sources */,
 				AB944E9E28F24113002C3DDA /* V_QuizList.swift in Sources */,
+				ABBA4AF6291B848100F4B1D4 /* V_SplashScreen.swift in Sources */,
 				AB944E9C28F24113002C3DDA /* _556_GPApp.swift in Sources */,
-				AB18944C2908E97B00D0C421 /* C_Main.swift in Sources */,
-				AB944ED428F24B45002C3DDA /* ModelData.swift in Sources */,
+				AB2D029F2925D39200743FBE /* V_MainPage.swift in Sources */,
+				AB18944C2908E97B00D0C421 /* F_Main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
