@@ -7,19 +7,29 @@
 
 import SwiftUI
 
-//struct mainPageButton: ButtonStyle {
-//    func makeBody(configuration: Configuration) -> some View {
-//        configuration.label
-//            .foregroundColor(.black)
-//            .frame(width: 35, height: 35)
-//            .background(.white)
-//            .clipShape(Circle())
-//            .shadow(color: .blue, radius: 1)
-//    }
-//}
+// Main button for quiz page (V_SlideCardStack)
+struct MainButtonStyle: ButtonStyle {
+    var color: Color
+    var textColor: Color
+    var borderColor: Color
+    
+    public func makeBody(configuration: MainButtonStyle.Configuration) -> some View {
+        
+        configuration.label
+            .foregroundColor(textColor)
+            .padding(15)
+            .background(RoundedRectangle(cornerRadius: 15).fill(color))
+            .cornerRadius(15)
+            .border(borderColor, width: 2)
+            .compositingGroup()
+            .opacity(configuration.isPressed ? 0.5 : 1.0)
+            .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
+    }
+}
 
-// Buttons for main page
-struct MainPageButton: View {
+
+// Menu buttons for start page
+struct StartPageButton: View {
     var labelValue: String
     var imageValue: String
     

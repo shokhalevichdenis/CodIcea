@@ -13,15 +13,35 @@ struct V_SlideCardStack: View {
     
     @State private var iterator: Int = 0
     @State private var questionIndex: Int = 0
-    @State var progressWidth = 0.0
+    @State var progressBarWidth = 0.0
     @State var quiz: [Quiz]
     @State var title: String
     @State var pressedButton: Int = 0
     
-    @State var animateButton: Bool = false
+    @State var animateMainButton: Bool = false
     @State var buttonBgColor: Color = .white
     @State var buttonIsDisabled: Bool = true
     @State var buttonString: String = "Check"
+    
+    @State var checkButtonColor: Color = Color("LightGray")
+    @State var checkButtonBorColor: Color = Color("LightGray2")
+    @State var checkButtonFColor: Color = Color("LightGray3")
+    
+    @State var shouldAnimate: String = "none1"
+    @State var popUpPaneWidth: Int = 0
+    
+    // TODO: ADD Private where necessary
+    
+    
+    // Next question
+    func nextQuestion() {
+        questionIndex < (quiz.count - 1) ? (questionIndex += 1) : (questionIndex = quiz.count - 1)
+        // Assigning questions' ids so TabView selector can safely iterate through them
+        iterator = quiz[questionIndex].id
+        pressedButton = 0
+        buttonIsDisabled = true
+    }
+    
     
     var body: some View {
         GeometryReader {geometry in
@@ -33,7 +53,7 @@ struct V_SlideCardStack: View {
                         // TODO: Number of questions to the left from a bar
                         Path{ path in
                             path.move(to: CGPoint(x: 0, y: 10))
-                            path.addLine(to: CGPoint(x: progressWidth, y: 10))
+                            path.addLine(to: CGPoint(x: progressBarWidth, y: 10))
                         }
                         .stroke(Color.blue, lineWidth: 20).background(.gray)
                         .frame(height: 20)
@@ -43,7 +63,6 @@ struct V_SlideCardStack: View {
                         // Displaying questions
                         TabView(selection: $iterator) {
                             ForEach(quiz) { question in
-                                //                                V_SlideCard(question: question, pressedButton: self.$pressedButton)
                                 VStack{
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text(question.question)
@@ -54,22 +73,20 @@ struct V_SlideCardStack: View {
                                         VStack(alignment: .center){
                                             
                                             ForEach(question.answers) { answer in
-                                                Button(action: {
+                                                Button {
                                                     pressedButton = answer.id
                                                     buttonIsDisabled = false
-                                                })
-                                                {
-                                                    Text(answer.answer)
-                                                        .multilineTextAlignment(.leading)
-                                                        .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
-                                                        .frame(maxWidth:.infinity, alignment: .leading)
-                                                        .background(answer.id == pressedButton ? buttonBgColor : .white)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                                                        .animation(.easeInOut, value: pressedButton)
-                                                        .shadow(color: chooseAnswer(answer.id, pressedButton), radius: 2)
+                                                    checkButtonColor = .green
+                                                    checkButtonFColor = .black
+                                                    shouldAnimate = "none3"
+                                                } label: {
+                                                    if (answer.id == pressedButton) {
+                                                        V_CardButtons(strokeColor: Color("LightGray3"), shouldAnimate: $shouldAnimate, text: answer.answer)
+                                                    } else if (pressedButton != answer.id) {
+                                                        V_CardButtons(shouldAnimate: $shouldAnimate, text: answer.answer)
+                                                    }
                                                 }
                                             }
-                                            
                                         }
                                         .font(.body)
                                         .foregroundColor(.black)
@@ -91,9 +108,8 @@ struct V_SlideCardStack: View {
                         .onAppear{
                             // Assigning initial value to iterator
                             iterator = quiz[questionIndex].id
-                            progressWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
+                            progressBarWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
                         }
-                        
                     }
                     .padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
                     
@@ -102,53 +118,64 @@ struct V_SlideCardStack: View {
                 .navigationBarTitleDisplayMode(.inline)
                 
                 HStack {
-                    Button {
-                        if buttonString == "Next Question" {
-                            pressedButton = 0
-                            buttonBgColor = .white
-                            // Iterating through questions
-                            questionIndex < (quiz.count - 1) ? (questionIndex += 1) : (questionIndex = quiz.count - 1)
-                            // Assigning questions' ids so TabView selector can safely iterate through them
-                            iterator = quiz[questionIndex].id
-                            // Filling the progress bar
-                            progressWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
-                            buttonString = "Check"
-                        } else {
-                            buttonBgColor = setColor(quiz[questionIndex].correctAnswer, pressedButton)
-                            buttonString = "Next Question"}
-                            withAnimation(.spring()) {
-                                animateButton.toggle()
-                            }
-                            
-                    } label: {
-                        Spacer()
-                        Text(buttonString)
-                        Spacer()
+                    if !animateMainButton {
+                        Button {
+                            nextQuestion()
+                            progressBarWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
+                        } label: {
+                            Text("Skip >>")
+                        }
+                        .buttonStyle(MainButtonStyle(color: .blue, textColor: .black, borderColor: .blue))
+                    } else {
+                        EmptyView()
                     }
-                    .buttonBorderShape(.roundedRectangle(radius: 10))
-                    .buttonStyle(.borderedProminent)
-                    .tint(.green)
-                    .frame(width: animateButton ? .infinity : .infinity, alignment: .center)
-                    .disabled(buttonIsDisabled)
                     
-                    Button {
-                        // Iterating through questions
-                        questionIndex < (quiz.count - 1) ? (questionIndex += 1) : (questionIndex = quiz.count - 1)
-                        // Assigning questions' ids so TabView selector can safely iterate through them
-                        iterator = quiz[questionIndex].id
-                        // Filling the progress bar
-                        progressWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
-                        // Reset color for the next question
-                        pressedButton = 0
-                    } label: {
-                        Text("Skip >>")
+                    ZStack {
+                        Button {
+                            if buttonString == "Next Question" {
+                                buttonBgColor = .white
+                                progressBarWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
+                                nextQuestion()
+                                buttonString = "Check"
+                                shouldAnimate = "none4"
+                                animateMainButton = false
+                                buttonIsDisabled = true
+                                
+                                checkButtonColor = Color("LightGray")
+                                checkButtonBorColor = Color("LightGray2")
+                                checkButtonFColor = Color("LightGray3")
+                                popUpPaneWidth = 0
+                            } else {
+                                animateMainButton = true
+                                buttonString = "Next Question"}
+                            shouldAnimate = checkAnswer(quiz[questionIndex].correctAnswer, pressedButton)
+                            popUpPaneWidth = 1
+                        } label: {
+                            HStack{
+                                Spacer()
+                                Text(buttonString)
+                                Spacer()
+                            }
+                        }
+                        .disabled(buttonIsDisabled)
+                        .buttonStyle(MainButtonStyle(color: checkButtonColor, textColor: checkButtonFColor, borderColor: checkButtonBorColor))
+                        .frame(width: geometry.size.width * 0.64)
+                        
+                        if buttonString == "Next Question" {
+                            VStack{
+                            }
+                            .frame(width: geometry.size.width * CGFloat(popUpPaneWidth), height: geometry.size.height * 0.12)
+                            .background(.green)
+                            .zIndex(-1)
+                        } else {
+                            VStack{
+                                
+                            }
+                            .frame(height: geometry.size.height * 0.12)
+                            .hidden()
+                        }
                     }
-//                    .frame(width: -1, height: -1)
-                    .buttonBorderShape(.roundedRectangle(radius: 10))
-                    .buttonStyle(.borderedProminent)
-                    .tint(.blue)
-//                    .offset(x: animateButton ? 30 : 0, y: 0)
-                }.padding()
+                }
             }
         }
     }
@@ -156,7 +183,7 @@ struct V_SlideCardStack: View {
 
 struct V_SlideCardStack_Previews: PreviewProvider {
     static var previews: some View {
-        V_SlideCardStack(quiz: QuizViewModel().quizzesData, title: "2: Variables")
+        V_SlideCardStack(quiz: QuizViewModel().quizzesData, title: "2: Variables", shouldAnimate: "none")
             .environmentObject(QuizViewModel())
     }
 }

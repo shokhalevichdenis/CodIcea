@@ -9,15 +9,15 @@ import Foundation
 import SwiftUI
 
 // Changes color of the answer
-func setColor(_ answerCorrect: Int, _ pressedButton: Int) -> Color {
+func checkAnswer(_ answerCorrect: Int, _ pressedButton: Int) -> String {
     
-    var buttonColor: Color = .white
+    var ifCoorect: String = ""
         if answerCorrect == pressedButton {
-            buttonColor = .green
+            ifCoorect = "correct"
         } else {
-            buttonColor = .red
+            ifCoorect = "wrong"
         }
-    return buttonColor
+    return ifCoorect
 }
 
 // Changes color of a selected answer

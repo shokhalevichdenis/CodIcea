@@ -10,16 +10,17 @@ import SwiftUI
 struct V_MainPage: View {
     var body: some View {
         NavigationStack{
-            NavigationLink {
-                V_QuizList()
-            } label: {
-                MainPageButton(labelValue: "Categories", imageValue: "questionmark")
-            }
-            
-            NavigationLink {
-                V_QuizList()
-            } label: {
-                MainPageButton(labelValue: "Some Other Page", imageValue: "questionmark.folder")
+            VStack{
+                NavigationLink {
+                    V_QuizList()
+                } label: {
+                    StartPageButton(labelValue: "Categories", imageValue: "questionmark")
+                }
+                NavigationLink {
+                    V_QuizList()
+                } label: {
+                    StartPageButton(labelValue: "Some Other Page", imageValue: "questionmark.folder")
+                }
             }
         }
     }
