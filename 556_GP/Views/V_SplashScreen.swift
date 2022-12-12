@@ -8,40 +8,72 @@
 import SwiftUI
 
 struct V_SplashScreen: View {
-    @State var isActive : Bool = false
+    @State var isActive: Bool = false
     @State private var size = 0.8
     @State private var opacity = 0.5
-    @State private var color: Color = .white
+    @State private var offsetY: CGFloat = 10
     
-    // Customise your SplashScreen here
+    // Changes size and opcacity for animation.
+    func animateSplash() {
+        withAnimation(.easeIn(duration: 1.2)) {
+            self.size = 0.9
+            self.opacity = 1.0
+        }
+    }
+    
     var body: some View {
+        // Sends to the main page after the splash.
         if isActive {
             V_MainPage()
         } else {
-            VStack {
-                VStack {
-                    Image(systemName: "swift")
-                        .font(.system(size: 160))
-                    
-                    Text("")
-//                        .font(Font.custom("Baskerville-Bold", size: 26))
-                        .foregroundColor(.black.opacity(0.80))
-                        .multilineTextAlignment(.center)
-                    
+            ZStack {
+                Group {
+                    Group {
+                        Text("codIcea")
+                            .font(Font.custom("Futura Medium", size: 53))
+                            .foregroundColor(.green.opacity(0.80))
+                            .multilineTextAlignment(.center)
+                            .frame(width: 200)
+                    }
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 1.2)) {
+                            animateSplash()
+                        }
+                    }
+                    Group {
+                        Text("codIcea")
+                            .font(Font.custom("Futura Medium", size: 53))
+                            .foregroundColor(.green.opacity(0.80))
+                            .multilineTextAlignment(.center)
+                            .frame(width: 200)
+                    }
+                    .offset(y: offsetY)
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 1.2)) {
+                            animateSplash()
+                            self.offsetY = 0
+                        }
+                    }
+                    Group {
+                        Text("codIcea")
+                            .font(Font.custom("Futura Medium", size: 53))
+                            .foregroundColor(.green.opacity(0.80))
+                            .multilineTextAlignment(.center)
+                            .frame(width: 200)
+                    }
+                    .offset(y: -offsetY)
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 1.2)) {
+                            animateSplash()
+                        }
+                    }
                 }
                 .scaleEffect(size)
                 .opacity(opacity)
-                .foregroundColor(color)
                 .frame(width: 29)
-                .onAppear {
-                    withAnimation(.easeIn(duration: 1.2)) {
-                        self.size = 0.9
-                        self.opacity = 1.0
-                        self.color = .black
-                        
-                    }
-                }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.black)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     withAnimation {

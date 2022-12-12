@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AVFAudio
 
 // Changes color of the answer
 func checkAnswer(_ answerCorrect: Int, _ pressedButton: Int) -> String {
@@ -46,5 +47,25 @@ func uniqueCategory() -> Array<String> {
 func quizByValue(_ filterValue: String) -> [Quiz] {
     QuizViewModel().quizzesData.filter { question in
         (filterValue == question.category)
+    }
+}
+
+private var isStarted = false
+
+// Class for a player to handle track events
+class AudioPlayer: NSObject, AVAudioPlayerDelegate {
+    var player = AVAudioPlayer()
+    func playSong(songFileName: String) {
+        guard let soundFile = NSDataAsset(name: songFileName) else {
+            print("Could not read file named \(songFileName)")
+            return
+        }
+        do {
+            player = try AVAudioPlayer(data: soundFile.data)
+            player.play()
+            player.delegate = self
+        } catch {
+            print("ERROR: \(error.localizedDescription) creating audioPlayer.")
+        }
     }
 }

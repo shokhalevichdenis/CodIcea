@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+var myPlayer = AudioPlayer();
 struct V_SlideCardStack: View {
     
     @EnvironmentObject var quizData: QuizViewModel
@@ -27,11 +28,14 @@ struct V_SlideCardStack: View {
     @State var checkButtonBorColor: Color = Color("LightGray2")
     @State var checkButtonFColor: Color = Color("LightGray3")
     
-    @State var shouldAnimate: String = "none1"
+    @State var animationColor: String = "none"
     @State var popUpPaneWidth: Int = 0
     
-    // TODO: ADD Private where necessary
+    @State var buttonOffset = 0
     
+    // TODO: ADD Private where necessary
+    // TODO: Prevent Horizontal View
+    // TODO: Last Page
     
     // Next question
     func nextQuestion() {
@@ -41,7 +45,6 @@ struct V_SlideCardStack: View {
         pressedButton = 0
         buttonIsDisabled = true
     }
-    
     
     var body: some View {
         GeometryReader {geometry in
@@ -78,12 +81,12 @@ struct V_SlideCardStack: View {
                                                     buttonIsDisabled = false
                                                     checkButtonColor = .green
                                                     checkButtonFColor = .black
-                                                    shouldAnimate = "none3"
+                                                    animationColor = "none"
                                                 } label: {
                                                     if (answer.id == pressedButton) {
-                                                        V_CardButtons(strokeColor: Color("LightGray3"), shouldAnimate: $shouldAnimate, text: answer.answer)
+                                                        V_CardButtons(strokeColor: Color("LightGray3"), animationColor: $animationColor, text: answer.answer)
                                                     } else if (pressedButton != answer.id) {
-                                                        V_CardButtons(shouldAnimate: $shouldAnimate, text: answer.answer)
+                                                        V_CardButtons(animationColor: $animationColor, text: answer.answer)
                                                     }
                                                 }
                                             }
@@ -103,7 +106,7 @@ struct V_SlideCardStack: View {
                                 }
                             }
                         }
-                        .animation(.easeInOut, value: iterator)
+                        .animation(.easeIn, value: iterator)
                         .tabViewStyle(.page(indexDisplayMode: .never))
                         .onAppear{
                             // Assigning initial value to iterator
@@ -112,10 +115,7 @@ struct V_SlideCardStack: View {
                         }
                     }
                     .padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
-                    
                 }
-                .navigationTitle("\(title)")
-                .navigationBarTitleDisplayMode(.inline)
                 
                 HStack {
                     if !animateMainButton {
@@ -135,21 +135,29 @@ struct V_SlideCardStack: View {
                             if buttonString == "Next Question" {
                                 buttonBgColor = .white
                                 progressBarWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
-                                nextQuestion()
                                 buttonString = "Check"
-                                shouldAnimate = "none4"
                                 animateMainButton = false
                                 buttonIsDisabled = true
                                 
                                 checkButtonColor = Color("LightGray")
                                 checkButtonBorColor = Color("LightGray2")
                                 checkButtonFColor = Color("LightGray3")
+                                
                                 popUpPaneWidth = 0
+                                buttonOffset = 0
+                                nextQuestion()
                             } else {
                                 animateMainButton = true
-                                buttonString = "Next Question"}
-                            shouldAnimate = checkAnswer(quiz[questionIndex].correctAnswer, pressedButton)
-                            popUpPaneWidth = 1
+                                buttonString = "Next Question"
+                                popUpPaneWidth = 1
+                                buttonOffset = 20
+                            }
+                            animationColor = checkAnswer(quiz[questionIndex].correctAnswer, pressedButton)
+                            if (buttonString == "Next Question" && animationColor == "correct") {
+                                myPlayer.playSong(songFileName: "corr")
+                            } else if (buttonString == "Next Question" && animationColor == "wrong") {
+                                myPlayer.playSong(songFileName: "wrng")
+                            }
                         } label: {
                             HStack{
                                 Spacer()
@@ -160,16 +168,36 @@ struct V_SlideCardStack: View {
                         .disabled(buttonIsDisabled)
                         .buttonStyle(MainButtonStyle(color: checkButtonColor, textColor: checkButtonFColor, borderColor: checkButtonBorColor))
                         .frame(width: geometry.size.width * 0.64)
+                        .offset(y: CGFloat(buttonOffset))
                         
                         if buttonString == "Next Question" {
-                            VStack{
+                            VStack(alignment: .leading){
+                                if animationColor == "correct" {
+                                    Group {
+                                        Text("Correct!")
+                                            .foregroundColor(.black)
+                                            .padding(.leading, 35)
+                                        V_CheckMarkIcon(animationDuration: 0.4, answerStrokeColor: .green)
+                                            .padding(.top, -9)
+                                    }
+                                    .padding(-45) }
+                                else {
+
+                                    Group {
+                                        Text("Wrong!")
+                                            .foregroundColor(.black)
+                                            .padding(.leading, 35)
+                                        V_CheckMarkIcon(animationDuration: 0.4, answerStrokeColor: .red)
+                                            .padding(.top, -9)
+                                    }
+                                    .padding(-45)
+                                }
                             }
-                            .frame(width: geometry.size.width * CGFloat(popUpPaneWidth), height: geometry.size.height * 0.12)
-                            .background(.green)
+                            .frame(width: geometry.size.width * CGFloat(popUpPaneWidth), height: geometry.size.height * 0.17)
+                            .background(Color("LightGray2"))
                             .zIndex(-1)
                         } else {
                             VStack{
-                                
                             }
                             .frame(height: geometry.size.height * 0.12)
                             .hidden()
@@ -177,13 +205,15 @@ struct V_SlideCardStack: View {
                     }
                 }
             }
+            .navigationTitle("\(title)")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
 struct V_SlideCardStack_Previews: PreviewProvider {
     static var previews: some View {
-        V_SlideCardStack(quiz: QuizViewModel().quizzesData, title: "2: Variables", shouldAnimate: "none")
+        V_SlideCardStack(quiz: QuizViewModel().quizzesData, title: "2: Variables", animationColor: "none")
             .environmentObject(QuizViewModel())
     }
 }

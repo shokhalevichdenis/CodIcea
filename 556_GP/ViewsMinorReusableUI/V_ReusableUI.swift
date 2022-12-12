@@ -19,14 +19,11 @@ struct MainButtonStyle: ButtonStyle {
             .foregroundColor(textColor)
             .padding(15)
             .background(RoundedRectangle(cornerRadius: 15).fill(color))
-            .cornerRadius(15)
-            .border(borderColor, width: 2)
             .compositingGroup()
             .opacity(configuration.isPressed ? 0.5 : 1.0)
             .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
     }
 }
-
 
 // Menu buttons for start page
 struct StartPageButton: View {

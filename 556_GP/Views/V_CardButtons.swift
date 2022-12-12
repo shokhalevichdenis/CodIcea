@@ -3,22 +3,20 @@
 //  556_GP
 //
 //  Created by Dzianis Shakhalevich on 11/18/22.
-//
+//  Answer Buttons
 
 import SwiftUI
 
-
 struct V_CardButtons: View {
-    var animationDuration: Double = 0.40
     @State var strokeColor: Color = Color("LightGray2")
     @State var outerTrimEnd: CGFloat = 1
-    @Binding var shouldAnimate: String
+    @Binding var animationColor: String
     @State var text: String = ""
     
     var strokeStyle: StrokeStyle = .init(lineWidth: 2, lineCap: .round, lineJoin: .round)
     
     func animate() {
-        withAnimation(.linear(duration: 0.7 * animationDuration)) {
+        withAnimation(.linear(duration: 0.4)) {
             strokeColor = strokeColor
             outerTrimEnd = 1.0
         }
@@ -36,13 +34,13 @@ struct V_CardButtons: View {
         .contentShape(Rectangle())
         .frame(width: nil, height: nil)
         .ignoresSafeArea()
-        .onChange(of: shouldAnimate) {newvalue in
-            if (strokeColor == Color("LightGray3") && shouldAnimate == "correct") {
+        .onChange(of: animationColor) {newvalue in
+            if (strokeColor == Color("LightGray3") && animationColor == "correct") {
                 strokeColor = .green
                 outerTrimEnd = 0
                 animate()
             }
-            else if(strokeColor == Color("LightGray3") && shouldAnimate == "wrong")  {
+            else if(strokeColor == Color("LightGray3") && animationColor == "wrong")  {
                 strokeColor = .red
                 outerTrimEnd = 0
                 animate()
@@ -54,6 +52,6 @@ struct V_CardButtons: View {
 
 struct V_CardButtons_Previews: PreviewProvider {
     static var previews: some View {
-        V_CardButtons(shouldAnimate: Binding.constant("none"))
+        V_CardButtons(animationColor: Binding.constant("none"))
     }
 }
