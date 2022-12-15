@@ -1,395 +1,874 @@
 [
     {
-        "category": "1: variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1001,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "1 Suscipit inceptos est felis purus aenean aliquet adipiscing diam venenatis, augue nibh duis neque aliquam tellus condimentum sagittis vivamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "1: variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1002,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "2 Suscipit inceptos est felis purus aenean aliquet adipiscing diam venenatis, augue nibh duis neque aliquam tellus condimentum sagittis vivamus, cras .",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1003,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duiper erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1004,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duiper erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer, That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1005,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis nras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1006,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis neque aliquam telbilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1007,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis neque aliquam tellus condimentum sagittis vivamus, cubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1008,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis neque aliquam tellus condimeamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1009,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis neque aliquam tellus  sagittis vivamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Variables",
+        "language": "Swift",
         "id": 1010,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis neque aliquam tellus condimentum sagittis vivamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Data Types",
+        "language": "Swift",
         "id": 1011,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis neque aliquam tellus condimentum sagittis vivamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Data Types",
+        "language": "Swift",
         "id": 1012,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis neque aliquam tellus condimentum sagittis vivamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Data Types",
+        "language": "Swift",
         "id": 1013,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis neque aliquam tellus condimentum sagittis vivamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
     {
-        "category": "2: Variables",
+        "category": "Data Types",
+        "language": "Swift",
         "id": 1014,
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "3 nibh duis neque aliquam tellus , cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit.",
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
-                    "answer": "That is the answer, That is the answer, That is the answer"
+                    "answer": "1,000"
                 },
                 {
                     "id": 2,
-                    "answer": "That is the answer #2 answer #2"
+                    "answer": "2,000"
                 },
                 {
                     "id": 3,
-                    "answer": "That is the answer #2"
+                    "answer": "100"
                 },
                 {
                     "id": 4,
-                    "answer": "That is the answer #2answer #2"
+                    "answer": "0"
                 }
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
         "imageName": "f1"
     },
+    {
+        "category": "Data Types",
+        "language": "Swift",
+        "id": 1015,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Data Types",
+        "language": "Swift",
+        "id": 1016,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Data Types",
+        "language": "Swift",
+        "id": 1017,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Data Types",
+        "language": "Swift",
+        "id": 1018,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Data Types",
+        "language": "Swift",
+        "id": 1019,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Data Types",
+        "language": "Swift",
+        "id": 1020,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1021,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1022,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1023,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1024,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1025,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1026,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1027,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1028,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1029,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    {
+        "category": "Comparisons",
+        "language": "Swift",
+        "id": 1030,
+        "isAttempted": false,
+        "isAnswered": false,
+        "isFavorite": true,
+        "question": "What output will be produced by the code below? \n\nlet oneMillion = 1_000_000 \nlet oneThousand = oneMillion / 0_1_0_0_0 \nprint(oneThousand)",
+        "answers": [
+                {
+                    "id": 1,
+                    "answer": "1,000"
+                },
+                {
+                    "id": 2,
+                    "answer": "2,000"
+                },
+                {
+                    "id": 3,
+                    "answer": "100"
+                },
+                {
+                    "id": 4,
+                    "answer": "0"
+                }
+        ],
+        "correctAnswer": 1,
+        "imageName": "f1"
+    },
+    
     
 ]

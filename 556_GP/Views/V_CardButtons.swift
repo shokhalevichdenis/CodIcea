@@ -10,7 +10,7 @@ import SwiftUI
 struct V_CardButtons: View {
     @State var strokeColor: Color = Color("LightGray2")
     @State var outerTrimEnd: CGFloat = 1
-    @Binding var animationColor: String
+    @Binding var answerBorderColor: String
     @State var text: String = ""
     
     var strokeStyle: StrokeStyle = .init(lineWidth: 2, lineCap: .round, lineJoin: .round)
@@ -34,13 +34,13 @@ struct V_CardButtons: View {
         .contentShape(Rectangle())
         .frame(width: nil, height: nil)
         .ignoresSafeArea()
-        .onChange(of: animationColor) {newvalue in
-            if (strokeColor == Color("LightGray3") && animationColor == "correct") {
+        .onChange(of: answerBorderColor) {newvalue in
+            if (strokeColor == Color("LightGray3") && answerBorderColor == "correct") {
                 strokeColor = .green
                 outerTrimEnd = 0
                 animate()
             }
-            else if(strokeColor == Color("LightGray3") && animationColor == "wrong")  {
+            else if(strokeColor == Color("LightGray3") && answerBorderColor == "wrong")  {
                 strokeColor = .red
                 outerTrimEnd = 0
                 animate()
@@ -52,6 +52,6 @@ struct V_CardButtons: View {
 
 struct V_CardButtons_Previews: PreviewProvider {
     static var previews: some View {
-        V_CardButtons(animationColor: Binding.constant("none"))
+        V_CardButtons(answerBorderColor: Binding.constant("none"))
     }
 }

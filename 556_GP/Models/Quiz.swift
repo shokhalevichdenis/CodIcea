@@ -15,6 +15,7 @@ struct Answer: Hashable, Codable, Identifiable {
 
 struct Quiz: Hashable, Codable, Identifiable {
     var id: Int
+    var language: String
     var category: String
     var isAttempted: Bool
     var isAnswered: Bool

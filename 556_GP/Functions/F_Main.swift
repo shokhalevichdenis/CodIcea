@@ -43,14 +43,14 @@ func uniqueCategory() -> Array<String> {
     return Array(set).sorted()
 }
 
+
 // Returns filtered quizzes
-func quizByValue(_ filterValue: String) -> [Quiz] {
-    QuizViewModel().quizzesData.filter { question in
+func quizByValue(_ filterValue: String, quiz: [Quiz]) -> [Quiz] {
+    return quiz.filter { question in
         (filterValue == question.category)
     }
 }
 
-private var isStarted = false
 
 // Class for a player to handle track events
 class AudioPlayer: NSObject, AVAudioPlayerDelegate {
@@ -69,3 +69,17 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         }
     }
 }
+
+// Highlights code in queestion
+func hilightedText(str: String, searched: String) -> Text {
+        guard !str.isEmpty && !searched.isEmpty else { return Text(str) }
+        var result: Text!
+        let parts = str.components(separatedBy: searched)
+        for i in parts.indices {
+            result = (result == nil ? Text(parts[i]) : result + Text(parts[i]))
+            if i != parts.count - 1 {
+                result = result + Text(searched).bold().foregroundColor(Color("var"))
+            }
+        }
+        return result ?? Text(str)
+    }

@@ -8,21 +8,99 @@
 import SwiftUI
 
 struct V_MainPage: View {
+    
     var body: some View {
+        
         NavigationStack{
             VStack{
-                NavigationLink {
-                    V_QuizList()
-                } label: {
-                    StartPageButton(labelValue: "Categories", imageValue: "questionmark")
+                Text("What's your pleasure?")
+                    .font(Font.custom("Futura Medium", size: 23))
+                    .multilineTextAlignment(.leading)
+
+                 
+                ScrollView{
+                    NavigationLink {
+                        V_QuizList(chosenLanguage: "Swift")
+                    } label: {
+                        StartPageButton(labelValue: "Swift", imageValue: "swift")
+                    }
+                    NavigationLink {
+                        V_QuizList(chosenLanguage: "JavaScript")
+                    } label: {
+                        StartPageButton(labelValue: "JavaScript", imageValue: "heart.fill")
+                    }
+                    NavigationLink {
+                        V_QuizList(chosenLanguage: "Python")
+                    } label: {
+                        StartPageButton(labelValue: "Python", imageValue: "scribble")
+                    }
+                    NavigationLink {
+                        V_QuizList(chosenLanguage: "C#")
+                    } label: {
+                        StartPageButton(labelValue: "C#", imageValue: "number")
+                    }
+                    NavigationLink {
+                        V_QuizList(chosenLanguage: "C++")
+                    } label: {
+                        StartPageButton(labelValue: "C++", imageValue: "plusminus")
+                    }
+                    NavigationLink {
+                        V_QuizList(chosenLanguage: "PHP")
+                    } label: {
+                        StartPageButton(labelValue: "PHP", imageValue: "figure.fall")
+                    }
+                    NavigationLink {
+                        V_QuizList(chosenLanguage: "Java")
+                    } label: {
+                        StartPageButton(labelValue: "Java", imageValue: "cup.and.saucer")
+                    }
                 }
-                NavigationLink {
-                    V_QuizList()
-                } label: {
-                    StartPageButton(labelValue: "Some Other Page", imageValue: "questionmark.folder")
+                .scrollIndicators(.hidden)
+                Spacer()
+            }
+            .navigationTitle("Languages")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text("codIcea")
+                            .font(Font.custom("Futura Medium", size: 25))
+                            .foregroundColor(.green.opacity(0.80))
+                            .multilineTextAlignment(.center)
+                            .frame(width: 200, height: 20)
+                    }
                 }
             }
         }
+        .accentColor(.black)
+    }
+}
+
+//TODO: Move to the Reusable UI
+
+// Menu buttons for start page
+struct StartPageButton: View {
+    var labelValue: String
+    var imageValue: String
+    
+    var body: some View {
+        VStack{
+            Image(systemName: imageValue)
+                .foregroundColor(.black)
+                .frame(width: 35, height: 35)
+                .background(.white)
+                .clipShape(Circle())
+                .shadow(color: .black, radius: 1)
+            Text(labelValue)
+                .font(Font.custom("Futura Medium", size: 18))
+                .foregroundColor(.black)
+        }
+        .frame(width: 300, height: 100)
+        .background(RoundedRectangle(cornerRadius: 15)
+            .stroke(LinearGradient(gradient: Gradient(colors: [.green, Color("LightGray"), .green]), startPoint: .topLeading, endPoint: .bottomTrailing), style: .init(lineWidth: 2, lineCap: .round, lineJoin: .round))
+        )
+        .background(RoundedRectangle(cornerRadius: 15).fill(.white))
+        .padding(.bottom, 7)
     }
 }
 

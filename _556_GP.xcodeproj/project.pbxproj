@@ -11,6 +11,7 @@
 		AB2D029F2925D39200743FBE /* V_MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2D029E2925D39200743FBE /* V_MainPage.swift */; };
 		AB2D02A22925DFCC00743FBE /* V_ReusableUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2D02A12925DFCC00743FBE /* V_ReusableUI.swift */; };
 		AB3044F72925C981002B70DD /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3044F62925C981002B70DD /* QuizViewModel.swift */; };
+		AB48A85029474C1800EA9D17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB48A84F29474C1800EA9D17 /* ContentView.swift */; };
 		AB944E9C28F24113002C3DDA /* _556_GPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944E9B28F24113002C3DDA /* _556_GPApp.swift */; };
 		AB944E9E28F24113002C3DDA /* V_QuizList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB944E9D28F24113002C3DDA /* V_QuizList.swift */; };
 		AB944EA028F24114002C3DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB944E9F28F24114002C3DDA /* Assets.xcassets */; };
@@ -48,7 +49,8 @@
 		AB2D029E2925D39200743FBE /* V_MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_MainPage.swift; sourceTree = "<group>"; };
 		AB2D02A12925DFCC00743FBE /* V_ReusableUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_ReusableUI.swift; sourceTree = "<group>"; };
 		AB3044F62925C981002B70DD /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
-		AB944E9828F24113002C3DDA /* 556_GP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 556_GP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB48A84F29474C1800EA9D17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AB944E9828F24113002C3DDA /* CodIcea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodIcea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB944E9B28F24113002C3DDA /* _556_GPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _556_GPApp.swift; sourceTree = "<group>"; };
 		AB944E9D28F24113002C3DDA /* V_QuizList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_QuizList.swift; sourceTree = "<group>"; };
 		AB944E9F28F24114002C3DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,7 +115,7 @@
 		AB944E9928F24113002C3DDA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB944E9828F24113002C3DDA /* 556_GP.app */,
+				AB944E9828F24113002C3DDA /* CodIcea.app */,
 				AB944EA828F24115002C3DDA /* 556_GPTests.xctest */,
 				AB944EB228F24115002C3DDA /* 556_GPUITests.xctest */,
 			);
@@ -163,10 +165,11 @@
 		AB944ECB28F243F7002C3DDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AB48A84F29474C1800EA9D17 /* ContentView.swift */,
 				ABBA4AF5291B848100F4B1D4 /* V_SplashScreen.swift */,
 				AB2D029E2925D39200743FBE /* V_MainPage.swift */,
-				AB944EC928F24205002C3DDA /* V_SlideCardStack.swift */,
 				AB944E9D28F24113002C3DDA /* V_QuizList.swift */,
+				AB944EC928F24205002C3DDA /* V_SlideCardStack.swift */,
 				ABD119EF2927FC060000B886 /* V_CardButtons.swift */,
 			);
 			path = Views;
@@ -214,7 +217,7 @@
 			);
 			name = 556_GP;
 			productName = 565_GP;
-			productReference = AB944E9828F24113002C3DDA /* 556_GP.app */;
+			productReference = AB944E9828F24113002C3DDA /* CodIcea.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AB944EA728F24115002C3DDA /* 556_GPTests */ = {
@@ -337,6 +340,7 @@
 				AB944E9E28F24113002C3DDA /* V_QuizList.swift in Sources */,
 				ABBA4AF6291B848100F4B1D4 /* V_SplashScreen.swift in Sources */,
 				AB944E9C28F24113002C3DDA /* _556_GPApp.swift in Sources */,
+				AB48A85029474C1800EA9D17 /* ContentView.swift in Sources */,
 				AB2D029F2925D39200743FBE /* V_MainPage.swift in Sources */,
 				AB18944C2908E97B00D0C421 /* F_Main.swift in Sources */,
 			);
@@ -500,6 +504,7 @@
 				DEVELOPMENT_TEAM = K769H5BPV8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CodIcea;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -512,7 +517,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ds.-65-GP";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CodIcea;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -530,6 +535,7 @@
 				DEVELOPMENT_TEAM = K769H5BPV8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CodIcea;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -542,7 +548,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ds.-65-GP";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CodIcea;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

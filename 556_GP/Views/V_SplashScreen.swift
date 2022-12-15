@@ -11,11 +11,11 @@ struct V_SplashScreen: View {
     @State var isActive: Bool = false
     @State private var size = 0.8
     @State private var opacity = 0.5
-    @State private var offsetY: CGFloat = 10
+    @State private var offsetY: CGFloat = 15
     
     // Changes size and opcacity for animation.
     func animateSplash() {
-        withAnimation(.easeIn(duration: 1.2)) {
+        withAnimation(.easeIn(duration: 1.5)) {
             self.size = 0.9
             self.opacity = 1.0
         }
@@ -24,7 +24,7 @@ struct V_SplashScreen: View {
     var body: some View {
         // Sends to the main page after the splash.
         if isActive {
-            V_MainPage()
+            ContentView()
         } else {
             ZStack {
                 Group {
@@ -63,7 +63,7 @@ struct V_SplashScreen: View {
                     }
                     .offset(y: -offsetY)
                     .onAppear {
-                        withAnimation(.easeIn(duration: 1.2)) {
+                        withAnimation(.easeIn(duration: 1.5)) {
                             animateSplash()
                         }
                     }

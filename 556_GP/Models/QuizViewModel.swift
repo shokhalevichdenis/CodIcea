@@ -9,11 +9,9 @@ import Foundation
 import Combine
 
 
-class QuizViewModel: ObservableObject {
+final class QuizViewModel: ObservableObject {
     @Published var quizzesData: [Quiz] = load("quizzesData.json")
 }
-
-//var quizzes: [Quiz] = load("quizzesData.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

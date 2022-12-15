@@ -9,13 +9,14 @@ import SwiftUI
 
 @main
 struct _556_GPApp: App {
-    
-    @StateObject private var quizzesData = QuizViewModel()
+    @StateObject private var quizData = QuizViewModel()
     
     var body: some Scene {
         WindowGroup {
-            V_SplashScreen()
-                .environmentObject(quizzesData)
+            NavigationView {
+                V_SplashScreen()
+                    .environmentObject(quizData)
+            }
         }
     }
 }
