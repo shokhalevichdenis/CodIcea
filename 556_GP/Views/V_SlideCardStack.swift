@@ -10,9 +10,12 @@ import Foundation
 
 // Access Shared Defaults Object
 let userDefaults = UserDefaults.standard
+var wrongAnswersForPlot: [[Int]] = userDefaults.object(forKey: "forPlot") as? [[Int]] ?? [[0,0]]
 // Initialize Player
 var myPlayer = AudioPlayer();
+
 struct V_SlideCardStack: View {
+    @Binding var lWrongAnswersForPlot: [[Int]]
     @EnvironmentObject var quizData: QuizViewModel
     
     @State private var iterator: Int = 0
@@ -38,7 +41,11 @@ struct V_SlideCardStack: View {
     // Read/Get Array of Ids
     @State var wrongAnswers: [Int] = userDefaults.object(forKey: "myKey") as? [Int] ?? []
     
-    @State var showMenu = false
+    @State var localWrongAnswers: [Int] = []
+    @State var localCorrectAnswers: Int = 0
+    @State var localSkippedAnswers: Int = 0
+    
+
     
     // TODO: ADD Private where necessary
     // TODO: Prevent Horizontal View
@@ -65,16 +72,19 @@ struct V_SlideCardStack: View {
                                 
                                 // Drawing progress bar
                                 // TODO: Number of questions to the left from a bar
-                                Path{ path in
-                                    path.move(to: CGPoint(x: 0, y: 10))
-                                    path.addLine(to: CGPoint(x: progressBarWidth, y: 10))
+                                HStack(spacing: 0){
+                                    Path{ path in
+                                        path.move(to: CGPoint(x: 0, y: 10))
+                                        path.addLine(to: CGPoint(x: progressBarWidth, y: 10))
+                                    }
+                                    .stroke(RadialGradient(gradient: Gradient(colors: [.green, .clear]), center: .center, startRadius: 2, endRadius: 620), lineWidth: 20).background(RadialGradient(gradient: Gradient(colors: [Color("LightGray"), .clear]), center: .center, startRadius: 80, endRadius: 200))
+                                    .frame(width: geometry.size.width * 0.8, height: 20)
+                                    .cornerRadius(12)
+                                    .padding(.init(top: 20, leading: 0, bottom: 10, trailing: 0))
+                                    Text("\(questionIndex+1)/\(quiz.count)")
+                                        .frame(width: geometry.size.width * 0.12, alignment: .trailing)
+                                        .padding(.init(top: 20, leading: 0, bottom: 10, trailing: 0))
                                 }
-                                .stroke(RadialGradient(gradient: Gradient(colors: [.green, .clear]), center: .center, startRadius: 2, endRadius: 620), lineWidth: 20).background(Color("LightGray"))
-                                
-                                .frame(height: 20)
-                                .cornerRadius(12)
-                                .padding(.init(top: 20, leading: 0, bottom: 10, trailing: 0))
-                                
                                 // Displaying questions and answers
                                 TabView(selection: $iterator) {
                                     ForEach(quiz) { question in
@@ -124,7 +134,7 @@ struct V_SlideCardStack: View {
                                 .onAppear{
                                     // Assigning initial value to iterator
                                     iterator = quiz[questionIndex].id
-                                    progressBarWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
+                                    progressBarWidth += ((Double(geometry.size.width) * 0.8) / (Double(quiz.count)))
                                 }
                                 
                             }
@@ -136,8 +146,20 @@ struct V_SlideCardStack: View {
                             if !animateMainButton {
                                 Button {
                                     nextQuestion()
-                                    progressBarWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
-                                    print(questionIndex)
+                                    progressBarWidth += ((Double(geometry.size.width) * 0.8) / (Double(quiz.count)))
+                                    localSkippedAnswers += 1
+                                    if (questionIndex == quiz.count - 1) {
+                                        wrongAnswersForPlot.append([
+                                            wrongAnswersForPlot[wrongAnswersForPlot.count-1][0] + 1,
+                                            localWrongAnswers.count])
+                                        
+                                        userDefaults.set(wrongAnswersForPlot, forKey: "forPlot")
+                                        lWrongAnswersForPlot = wrongAnswersForPlot
+                                        lWrongAnswersForPlot.append([
+                                            wrongAnswersForPlot[lWrongAnswersForPlot.count-1][0] + 1,
+                                            localWrongAnswers.count])
+                                    } else {return}
+                                    
                                 } label: {
                                     Text("Skip >>")
                                 }
@@ -152,7 +174,7 @@ struct V_SlideCardStack: View {
                                 Button {
                                     if (buttonString == "Next Question") {
                                         buttonBgColor = .white
-                                        progressBarWidth += (Double(geometry.size.width-20) / (Double(quiz.count)))
+                                        progressBarWidth += ((Double(geometry.size.width) * 0.8) / (Double(quiz.count)))
                                         buttonString = "Check"
                                         animateMainButton = false
                                         buttonIsDisabled = true
@@ -165,8 +187,18 @@ struct V_SlideCardStack: View {
                                         buttonOffset = 0
                                         nextQuestion()
                                     } else if (buttonString == "View Results") {
+                                        wrongAnswersForPlot.append([
+                                            wrongAnswersForPlot[wrongAnswersForPlot.count-1][0] + 1,
+                                            localWrongAnswers.count])
+                                        
+                                        userDefaults.set(wrongAnswersForPlot, forKey: "forPlot")
+                                        lWrongAnswersForPlot = wrongAnswersForPlot
+                                        lWrongAnswersForPlot.append([
+                                            wrongAnswersForPlot[lWrongAnswersForPlot.count-1][0] + 1,
+                                            localWrongAnswers.count])
+                                        
                                         nextQuestion()
-                                        print(questionIndex)
+                                        
                                     } else {
                                         if (questionIndex < quiz.count - 1) {
                                             animateMainButton = true
@@ -189,10 +221,23 @@ struct V_SlideCardStack: View {
 
                                     if (buttonString == "Next Question" && answerBorderColor == "correct") {
                                         myPlayer.playSong(songFileName: "crct")
+                                        localCorrectAnswers += 1
                                     } else if (buttonString == "Next Question" && answerBorderColor == "wrong") {
                                         myPlayer.playSong(songFileName: "wrng")
                                         checkButtonColor = .white
                                         checkButtonBorColor = .orange
+                                        localWrongAnswers.append(quiz[questionIndex].id)
+                                        
+                                        // Saving unique wrong answers
+                                        var isDuplicate = false
+                                        for id in wrongAnswers {
+                                            if (id == quiz[questionIndex].id) {
+                                                isDuplicate = true
+                                            } else {continue}
+                                        }
+                                        if !isDuplicate {
+                                            wrongAnswers.append(quiz[questionIndex].id)
+                                        } else {return}
                                         userDefaults.set(wrongAnswers, forKey: "myKey")
                                     }
                                     
@@ -244,7 +289,7 @@ struct V_SlideCardStack: View {
                     }
                     .toolbar {
                         ToolbarItem(placement: .principal) {
-                            HStack {
+                            VStack {
                                 Text("\(title)")
                                     .font(Font.custom("Futura Medium", size: 25))
                                     .foregroundColor(.green.opacity(0.80))
@@ -255,7 +300,7 @@ struct V_SlideCardStack: View {
                     }
                 }
             } else {
-                EmptyView()
+                V_ResultsPage(wrongAnswers: localWrongAnswers.count, localCorrectAnswers: localCorrectAnswers, localSkippedAnswers: localSkippedAnswers)
             }
         }
     }
@@ -263,7 +308,7 @@ struct V_SlideCardStack: View {
 
 struct V_SlideCardStack_Previews: PreviewProvider {
     static var previews: some View {
-        V_SlideCardStack(quiz: QuizViewModel().quizzesData, title: "Variables", answerBorderColor: "none")
+        V_SlideCardStack(lWrongAnswersForPlot: Binding.constant([[0,0]]), quiz: QuizViewModel().quizzesData, title: "Variables", answerBorderColor: "none")
             .environmentObject(QuizViewModel())
     }
 }

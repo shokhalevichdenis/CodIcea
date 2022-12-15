@@ -9,18 +9,31 @@ import SwiftUI
 
 
 struct ContentView: View {
-    
-    // Controls display of sidebar
-    @State var showSidebar: Bool = false
-    
+    @Binding var lWrongAnswersForPlot: [[Int]]
+
     var body: some View {
-           V_MainPage()
+        NavigationStack{
+            TabView() {
+                V_MainPage(lWrongAnswersForPlot: $lWrongAnswersForPlot)
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                V_ReviewPage(lWrongAnswersForPlot: $lWrongAnswersForPlot)
+                    .tabItem {
+                        Label("Review", systemImage: "exclamationmark.arrow.circlepath")
+                    }
+
+            }
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .accentColor(.black)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(lWrongAnswersForPlot: Binding.constant([[0,0]]))
+            .environmentObject(QuizViewModel())
     }
 }
 

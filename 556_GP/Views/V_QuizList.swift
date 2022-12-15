@@ -13,7 +13,7 @@ struct V_QuizList: View {
     @EnvironmentObject var quizData: QuizViewModel
     @State var chosenLanguage: String = ""
     @State var searchText: String = ""
-    
+    @Binding var lWrongAnswersForPlot: [[Int]]
     
     var body: some View {
         NavigationStack {
@@ -21,20 +21,23 @@ struct V_QuizList: View {
                 .font(Font.custom("Futura Medium", size: 23))
                 .multilineTextAlignment(.leading)
             
-            List(uniqueCategory(), id: \.self){category in
-                NavigationLink {
-                    V_SlideCardStack(quiz: quizByValue(category, quiz: quizData.quizzesData), title: category)
-                } label: {
-                    V_QuizItem(category: category)
+            List {
+                ForEach(searchResults, id: \.self) { category in
+                    NavigationLink {
+                        V_SlideCardStack(lWrongAnswersForPlot: $lWrongAnswersForPlot, quiz: quizByValue(category, quiz: quizData.quizzesData), title: category)
+                    } label: {
+                        V_QuizItem(category: category)
+                    }
                 }
             }
+            .searchable(text: $searchText)
             .listStyle(.plain)
             .padding(.trailing, 20)
             .navigationTitle("Categories")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    HStack {
+                    VStack {
                         Text("codIcea")
                             .font(Font.custom("Futura Medium", size: 25))
                             .foregroundColor(.green.opacity(0.80))
@@ -43,14 +46,11 @@ struct V_QuizList: View {
                     }
                 }
             }
-            .searchable(text: $searchText) {
-                ForEach(searchResults, id: \.self) { result in
-                    Text("\(result)").searchCompletion(result)
-                }
-            }
+            .searchable(text: $searchText)
         }
         .accentColor(.black)
     }
+    // Search results
     var searchResults: [String] {
         if searchText.isEmpty {
             return uniqueCategory()
@@ -62,7 +62,7 @@ struct V_QuizList: View {
 
 struct V_QuizList_Previews: PreviewProvider {
     static var previews: some View {
-        V_QuizList()
+        V_QuizList(lWrongAnswersForPlot: Binding.constant([[0,0]]))
             .environmentObject(QuizViewModel())
     }
 }
