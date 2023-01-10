@@ -1,56 +1,21 @@
-//
-//  V_MainPage.swift
-//  556_GP
-//
-//  Created by Dzianis Shakhalevich on 11/16/22.
-//
+// Main page with the list of programming languages.
 
 import SwiftUI
 
 struct V_MainPage: View {
     @Binding var lWrongAnswersForPlot: [[Int]]
     var body: some View {
-        
+        let languages: [[String]] = [["Swift", "swift"], ["JavaScript", "heart.fill"], ["Python", "scribble"], ["C#", "number"], ["C++", "plusminus"], ["PHP", "figure.fall"], ["Java", "cup.and.saucer"]]
         NavigationStack{
             VStack{
                 Text("What's your pleasure?")
                     .font(Font.custom("Futura Medium", size: 23))
                     .multilineTextAlignment(.leading)
                 ScrollView{
-                    NavigationLink {
-                        V_QuizList(chosenLanguage: "Swift", lWrongAnswersForPlot: $lWrongAnswersForPlot)
-                    } label: {
-                        StartPageButton(labelValue: "Swift", imageValue: "swift")
-                    }
-                    NavigationLink {
-                        V_QuizList(chosenLanguage: "JavaScript", lWrongAnswersForPlot: $lWrongAnswersForPlot)
-                    } label: {
-                        StartPageButton(labelValue: "JavaScript", imageValue: "heart.fill")
-                    }
-                    NavigationLink {
-                        V_QuizList(chosenLanguage: "Python", lWrongAnswersForPlot: $lWrongAnswersForPlot)
-                    } label: {
-                        StartPageButton(labelValue: "Python", imageValue: "scribble")
-                    }
-                    NavigationLink {
-                        V_QuizList(chosenLanguage: "C#", lWrongAnswersForPlot: $lWrongAnswersForPlot)
-                    } label: {
-                        StartPageButton(labelValue: "C#", imageValue: "number")
-                    }
-                    NavigationLink {
-                        V_QuizList(chosenLanguage: "C++", lWrongAnswersForPlot: $lWrongAnswersForPlot)
-                    } label: {
-                        StartPageButton(labelValue: "C++", imageValue: "plusminus")
-                    }
-                    NavigationLink {
-                        V_QuizList(chosenLanguage: "PHP", lWrongAnswersForPlot: $lWrongAnswersForPlot)
-                    } label: {
-                        StartPageButton(labelValue: "PHP", imageValue: "figure.fall")
-                    }
-                    NavigationLink {
-                        V_QuizList(chosenLanguage: "Java", lWrongAnswersForPlot: $lWrongAnswersForPlot)
-                    } label: {
-                        StartPageButton(labelValue: "Java", imageValue: "cup.and.saucer")
+                    ForEach(languages, id: \.self) { language in
+                        NavigationLink(destination: V_QuizList(chosenLanguage: language[0], lWrongAnswersForPlot: self.$lWrongAnswersForPlot)) {
+                            StartPageButton(labelValue: language[0], imageValue: language[1])
+                        }
                     }
                 }
                 .scrollIndicators(.hidden)
@@ -74,9 +39,7 @@ struct V_MainPage: View {
     }
 }
 
-//TODO: Move to the Reusable UI
-
-// Menu buttons for start page
+// Menu buttons.
 struct StartPageButton: View {
     var labelValue: String
     var imageValue: String
@@ -94,10 +57,9 @@ struct StartPageButton: View {
                 .foregroundColor(.black)
         }
         .frame(width: 300, height: 100)
-        .background(RoundedRectangle(cornerRadius: 15)
-            .stroke(LinearGradient(gradient: Gradient(colors: [.green, Color("LightGray"), .green]), startPoint: .topLeading, endPoint: .bottomTrailing), style: .init(lineWidth: 2, lineCap: .round, lineJoin: .round))
+        .background(Capsule()
+            .stroke(LinearGradient(gradient: Gradient(colors: [.green.opacity(0.8), Color("LightGray"), .green.opacity(0.8)]), startPoint: .topLeading, endPoint: .bottomTrailing), style: .init(lineWidth: 1, lineCap: .round, lineJoin: .round))
         )
-        .background(RoundedRectangle(cornerRadius: 15).fill(.white))
         .padding(.bottom, 7)
     }
 }

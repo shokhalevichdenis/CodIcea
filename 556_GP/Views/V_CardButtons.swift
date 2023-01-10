@@ -1,9 +1,4 @@
-//
-//  SwiftUIView.swift
-//  556_GP
-//
-//  Created by Dzianis Shakhalevich on 11/18/22.
-//  Answer Buttons
+//  Answer buttons with animation logic.
 
 import SwiftUI
 
@@ -15,6 +10,7 @@ struct V_CardButtons: View {
     
     var strokeStyle: StrokeStyle = .init(lineWidth: 2, lineCap: .round, lineJoin: .round)
     
+    // Animates buttons border.
     func animate() {
         withAnimation(.linear(duration: 0.4)) {
             strokeColor = strokeColor
@@ -36,12 +32,12 @@ struct V_CardButtons: View {
         .ignoresSafeArea()
         .onChange(of: answerBorderColor) {newvalue in
             if (strokeColor == Color("LightGray3") && answerBorderColor == "correct") {
-                strokeColor = .green
+                strokeColor = .green.opacity(0.8)
                 outerTrimEnd = 0
                 animate()
             }
             else if(strokeColor == Color("LightGray3") && answerBorderColor == "wrong")  {
-                strokeColor = .red
+                strokeColor = .red.opacity(0.8)
                 outerTrimEnd = 0
                 animate()
             }

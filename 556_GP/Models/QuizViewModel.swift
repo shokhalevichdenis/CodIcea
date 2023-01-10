@@ -1,9 +1,4 @@
-//
-//  ModelData.swift
-//  Quizzes
-//
-//  Loading data
-//
+//  Loading data from json file.
 
 import Foundation
 import Combine

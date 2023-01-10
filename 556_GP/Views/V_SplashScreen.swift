@@ -1,9 +1,4 @@
-//
-//  V_SplashScreen.swift
-//  556_GP
-//
-//  Splash screen for the application.
-//
+//  Splash screen.
 
 import SwiftUI
 
@@ -16,7 +11,7 @@ struct V_SplashScreen: View {
     
     // Changes size and opcacity for animation.
     func animateSplash() {
-        withAnimation(.easeIn(duration: 1.5)) {
+        withAnimation(.easeIn(duration: 1.8)) {
             self.size = 0.9
             self.opacity = 1.0
         }

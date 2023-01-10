@@ -3,54 +3,33 @@
 //  556_GP
 //
 //  Created by Dzianis Shakhalevich on 10/25/22.
+//  Contains reusable functions.
 //
 
 import Foundation
 import SwiftUI
 import AVFAudio
 
-// Changes color of the answer
+// Changes color of the answer.
 func checkAnswer(_ answerCorrect: Int, _ pressedButton: Int) -> String {
-    
-    var ifCoorect: String = ""
-        if answerCorrect == pressedButton {
-            ifCoorect = "correct"
-        } else {
-            ifCoorect = "wrong"
-        }
-    return ifCoorect
+    return answerCorrect == pressedButton ? "correct" : "wrong"
 }
 
-// Changes color of a selected answer
-func chooseAnswer(_ answerId: Int, _ pressedButton: Int) -> Color {
-    
-    var buttonColor: Color = .white
-    
-    if (answerId == pressedButton) {
-        buttonColor = .gray
-    } else {
-        buttonColor = .white
-    }
-    return buttonColor
+// Changes color of a selected answer.
+func chooseAnswer(_ answerId: Int, _ pressedButton: Int) -> Color {    
+    return answerId == pressedButton ? .gray : .white
 }
 
 // Filters unique categories and puts them into an array.
 func uniqueCategory() -> Array<String> {
-    var set: Set<String> = []
-    for question in QuizViewModel().quizzesData {
-        set.insert(question.category)
-    }
+    let set: Set<String> = Set(QuizViewModel().quizzesData.map({ $0.category }))
     return Array(set).sorted()
 }
 
-
 // Returns filtered quizzes
 func quizByValue(_ filterValue: String, quiz: [Quiz]) -> [Quiz] {
-    return quiz.filter { question in
-        (filterValue == question.category)
-    }
+    return quiz.filter { $0.category == filterValue }
 }
-
 
 // Class for a player to handle track events
 class AudioPlayer: NSObject, AVAudioPlayerDelegate {
@@ -70,16 +49,32 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
 }
 
-// Highlights code in queestion
-func hilightedText(str: String, searched: String) -> Text {
-        guard !str.isEmpty && !searched.isEmpty else { return Text(str) }
-        var result: Text!
-        let parts = str.components(separatedBy: searched)
-        for i in parts.indices {
-            result = (result == nil ? Text(parts[i]) : result + Text(parts[i]))
-            if i != parts.count - 1 {
-                result = result + Text(searched).bold().foregroundColor(Color("var"))
+// Highlights code syntax in a queestion (draft).
+// TODO: Move to a separate module.
+func highlightedText(str: String, searched: [(word: String, color: Color)]) -> Text {
+    guard !str.isEmpty && !searched.isEmpty else {return Text(str)}
+    let parts = str.components(separatedBy: [" "])
+    var result: Text!
+    for part in parts {
+        var found = false
+        for each in searched {
+            if (each.word == part) {
+                if result == nil {
+                    result = Text(part + " ").bold().foregroundColor(each.color)
+                } else {
+                    result = result + Text(part + " ").bold().foregroundColor(each.color)
+                }
+                found = true
+                break
             }
         }
-        return result ?? Text(str)
+        if !found {
+            if result == nil {
+                result = Text(part + " ")
+            } else {
+                result = result + Text(part + " ")
+            }
+        }
     }
+    return result ?? Text(str)
+}

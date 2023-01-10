@@ -1,16 +1,14 @@
-//
-//  V_ResultsPage.swift
-//  556_GP
-//
-//  Created by Dzianis Shakhalevich on 12/14/22.
-//
+// The resuls of a taken quiz.
 
 import SwiftUI
 
 struct V_ResultsPage: View {
+    @Binding var lWrongAnswersForPlot: [[Int]]
     var wrongAnswers: Int = 0
     var localCorrectAnswers: Int = 0
     var localSkippedAnswers: Int = 0
+    var quiz: [Quiz]
+    var title: String
     
     var body: some View {
         
@@ -44,10 +42,22 @@ struct V_ResultsPage: View {
                     }
                     Spacer()
                 }
-//                Divider()
                 Spacer()
+                Divider()
+                Spacer()
+                NavigationLink {
+                    ContentView(lWrongAnswersForPlot: $lWrongAnswersForPlot)
+                } label: {
+                    StartPageButton(labelValue: "Home", imageValue: "house")
+                }
+                NavigationLink {
+                    V_SlideCardStack(lWrongAnswersForPlot: $lWrongAnswersForPlot, quiz: quiz, title: title)
+                } label: {
+                    StartPageButton(labelValue: "Another \(title) Quiz", imageValue: "arrow.triangle.2.circlepath.circle")
+                }
                 Spacer()
             }
+            .navigationBarBackButtonHidden()
             .navigationTitle("Results")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -68,6 +78,6 @@ struct V_ResultsPage: View {
 
 struct V_ResultsPage_Previews: PreviewProvider {
     static var previews: some View {
-        V_ResultsPage()
+        V_ResultsPage(lWrongAnswersForPlot: Binding.constant([[]]), quiz: QuizViewModel().quizzesData, title: "variables")
     }
 }

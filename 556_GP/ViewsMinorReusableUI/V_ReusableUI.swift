@@ -1,13 +1,8 @@
-//
-//  Styles.swift
-//  556_GP
-//
-//  Created by Dzianis Shakhalevich on 11/16/22.
-//
+// Reusable elements of design.
 
 import SwiftUI
 
-// Main button for quiz page (V_SlideCardStack)
+// Main button for quiz page (V_SlideCardStack).
 struct MainButtonStyle: ButtonStyle {
     var color: Color
     var textColor: Color
@@ -19,18 +14,18 @@ struct MainButtonStyle: ButtonStyle {
             .foregroundColor(textColor)
             .padding(15)
             .background(RoundedRectangle(cornerRadius: 15)
-                .stroke(borderColor, style: .init(lineWidth: 2, lineCap: .round, lineJoin: .round))
+                .stroke(borderColor, style: .init(lineWidth: 1, lineCap: .round, lineJoin: .round))
             )
             .background(RoundedRectangle(cornerRadius: 15)
                 .fill(color)
             )
             .compositingGroup()
             .opacity(configuration.isPressed ? 0.5 : 1.0)
-            .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
+            .scaleEffect(configuration.isPressed ? 0.85 : 1.0)
     }
 }
 
-// A row for the categories list
+// A row for the list of categories.
 struct V_QuizItem: View {
     var category: String
     

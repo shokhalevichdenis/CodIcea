@@ -1,9 +1,4 @@
-//
-//  Quiz.swift
-//  556_GP
-//
-//  Schema for a Quiz
-//
+//  Schema for a quiz question.
 
 import Foundation
 import SwiftUI
@@ -22,11 +17,9 @@ struct Quiz: Hashable, Codable, Identifiable {
     var isFavorite: Bool
     var question: String
     var correctAnswer: Int
-    
     private var imageName: String
     var image: Image {
         Image(imageName)
     }
-    
     var answers: [Answer]
 }

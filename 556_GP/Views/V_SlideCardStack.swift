@@ -1,9 +1,4 @@
-//
-//  V_Splash.swift
-//  556_GP
-//
-//  View of the quiz questions withing a category
-//
+//  Quiz page.
 
 import SwiftUI
 import Foundation
@@ -24,16 +19,13 @@ struct V_SlideCardStack: View {
     @State var quiz: [Quiz]
     @State var title: String
     @State var pressedButton: Int = 0
-    
     @State var animateMainButton: Bool = false
     @State var buttonBgColor: Color = .white
     @State var buttonIsDisabled: Bool = true
     @State var buttonString: String = "Check"
-    
     @State var checkButtonColor: Color = Color("LightGray")
     @State var checkButtonBorColor: Color = Color("LightGray2")
     @State var checkButtonFColor: Color = Color("LightGray3")
-    
     @State var answerBorderColor: String = "none"
     @State var popUpPaneWidth: Int = 0
     @State var buttonOffset = 0
@@ -45,13 +37,7 @@ struct V_SlideCardStack: View {
     @State var localCorrectAnswers: Int = 0
     @State var localSkippedAnswers: Int = 0
     
-
-    
-    // TODO: ADD Private where necessary
-    // TODO: Prevent Horizontal View
-    // TODO: Last Page
-    
-    // Next question
+    // Next question.
     func nextQuestion() {
         questionIndex < (quiz.count - 1) ? (questionIndex += 1) : (questionIndex = quiz.count)
         // Assigning questions' ids so TabView selector can safely iterate through them
@@ -77,7 +63,7 @@ struct V_SlideCardStack: View {
                                         path.move(to: CGPoint(x: 0, y: 10))
                                         path.addLine(to: CGPoint(x: progressBarWidth, y: 10))
                                     }
-                                    .stroke(RadialGradient(gradient: Gradient(colors: [.green, .clear]), center: .center, startRadius: 2, endRadius: 620), lineWidth: 20).background(RadialGradient(gradient: Gradient(colors: [Color("LightGray"), .clear]), center: .center, startRadius: 80, endRadius: 200))
+                                    .stroke(RadialGradient(gradient: Gradient(colors: [.green.opacity(0.8), .clear]), center: .center, startRadius: 2, endRadius: 620), lineWidth: 20).background(RadialGradient(gradient: Gradient(colors: [Color("LightGray"), .clear]), center: .center, startRadius: 80, endRadius: 200))
                                     .frame(width: geometry.size.width * 0.8, height: 20)
                                     .cornerRadius(12)
                                     .padding(.init(top: 20, leading: 0, bottom: 10, trailing: 0))
@@ -90,8 +76,7 @@ struct V_SlideCardStack: View {
                                     ForEach(quiz) { question in
                                         VStack{
                                             VStack(alignment: .leading, spacing: 0) {
-                                                hilightedText(str: question.question, searched: "let")
-                                                    .padding(.init(top: 0, leading: 0, bottom: 20, trailing: 0))
+                                                Text(question.question)
                                                 
                                                 Spacer()
                                                 
@@ -101,7 +86,8 @@ struct V_SlideCardStack: View {
                                                         Button {
                                                             pressedButton = answer.id
                                                             buttonIsDisabled = false
-                                                            checkButtonColor = .green
+                                                            checkButtonColor = .green.opacity(0.8)
+                                                            checkButtonBorColor = .green
                                                             checkButtonFColor = .black
                                                             answerBorderColor = "none"
                                                         } label: {
@@ -129,7 +115,7 @@ struct V_SlideCardStack: View {
                                         }
                                     }
                                 }
-                                .animation(.easeOut, value: iterator)
+                                .animation(.easeIn(duration: 0.0), value: iterator)
                                 .tabViewStyle(.page(indexDisplayMode: .never))
                                 .onAppear{
                                     // Assigning initial value to iterator
@@ -141,13 +127,18 @@ struct V_SlideCardStack: View {
                             .padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
                         }
                         
-                        // Next and Check buttions
+                        // "Next" and "Check" buttons.
                         HStack {
                             if !animateMainButton {
                                 Button {
                                     nextQuestion()
                                     progressBarWidth += ((Double(geometry.size.width) * 0.8) / (Double(quiz.count)))
                                     localSkippedAnswers += 1
+                                    buttonIsDisabled = true
+                                    
+                                    checkButtonColor = Color("LightGray")
+                                    checkButtonBorColor = Color("LightGray2")
+                                    checkButtonFColor = Color("LightGray3")
                                     if (questionIndex == quiz.count - 1) {
                                         wrongAnswersForPlot.append([
                                             wrongAnswersForPlot[wrongAnswersForPlot.count-1][0] + 1,
@@ -163,7 +154,7 @@ struct V_SlideCardStack: View {
                                 } label: {
                                     Text("Skip >>")
                                 }
-                                .buttonStyle(MainButtonStyle(color: .white, textColor: .black, borderColor: .black))
+                                .buttonStyle(MainButtonStyle(color: .white, textColor: .black, borderColor: .black.opacity(0.8)))
                                 .frame(width: geometry.size.width * 0.3)
                                 .offset(x: -8)
                             } else {
@@ -196,22 +187,25 @@ struct V_SlideCardStack: View {
                                         lWrongAnswersForPlot.append([
                                             wrongAnswersForPlot[lWrongAnswersForPlot.count-1][0] + 1,
                                             localWrongAnswers.count])
-                                        
                                         nextQuestion()
-                                        
                                     } else {
                                         if (questionIndex < quiz.count - 1) {
                                             animateMainButton = true
                                             buttonString = "Next Question"
                                             popUpPaneWidth = 1
                                             buttonOffset = 20
+                                            let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                                                impactMed.impactOccurred()
                                         } else {
+                                            localWrongAnswers.append(quiz[questionIndex].id)
                                             animateMainButton = true
                                             buttonString = "View Results"
-                                            checkButtonBorColor = .green
+                                            checkButtonBorColor = .green.opacity(0.8)
                                             checkButtonColor = .white
                                             popUpPaneWidth = 1
                                             buttonOffset = 20
+                                            let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                                                impactMed.impactOccurred()
                                         }
                                     }
 
@@ -225,7 +219,7 @@ struct V_SlideCardStack: View {
                                     } else if (buttonString == "Next Question" && answerBorderColor == "wrong") {
                                         myPlayer.playSong(songFileName: "wrng")
                                         checkButtonColor = .white
-                                        checkButtonBorColor = .orange
+                                        checkButtonBorColor = .orange.opacity(0.8)
                                         localWrongAnswers.append(quiz[questionIndex].id)
                                         
                                         // Saving unique wrong answers
@@ -259,18 +253,18 @@ struct V_SlideCardStack: View {
                                             Group {
                                                 Text("Correct!")
                                                     .foregroundColor(.black)
-                                                    .padding(.leading, 35)
-                                                V_CheckMarkIcon(animationDuration: 0.4, answerStrokeColor: .green)
-                                                    .padding(.top, -9)
+                                                    .padding(.leading, 25)
+                                                V_CheckMarkIcon(animationDuration: 0.4, answerStrokeColor: .green.opacity(0.8))
+                                                    .padding(.init(top: -9, leading: -9, bottom: 0, trailing: 0))
                                             }
                                             .padding(-45) }
                                         else {
                                             Group {
                                                 Text("Wrong!")
                                                     .foregroundColor(.black)
-                                                    .padding(.leading, 35)
-                                                V_CheckMarkIcon(animationDuration: 0.4, answerStrokeColor: .red)
-                                                    .padding(.top, -9)
+                                                    .padding(.leading, 28)
+                                                V_CheckMarkIcon(animationDuration: 0.4, answerStrokeColor: .red.opacity(0.8))
+                                                    .padding(.init(top: -9, leading: -8, bottom: 0, trailing: 0))
                                             }
                                             .padding(-45)
                                         }
@@ -300,7 +294,7 @@ struct V_SlideCardStack: View {
                     }
                 }
             } else {
-                V_ResultsPage(wrongAnswers: localWrongAnswers.count, localCorrectAnswers: localCorrectAnswers, localSkippedAnswers: localSkippedAnswers)
+                V_ResultsPage(lWrongAnswersForPlot: $lWrongAnswersForPlot, wrongAnswers: localWrongAnswers.count, localCorrectAnswers: localCorrectAnswers, localSkippedAnswers: localSkippedAnswers, quiz: quiz, title: title)
             }
         }
     }
@@ -312,3 +306,7 @@ struct V_SlideCardStack_Previews: PreviewProvider {
             .environmentObject(QuizViewModel())
     }
 }
+
+
+// TODO: ADD Private where necessary
+// TODO: Prevent Horizontal View

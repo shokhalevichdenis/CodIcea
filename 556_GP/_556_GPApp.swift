@@ -1,9 +1,4 @@
-//
-//  _556_GPApp.swift
-//  556_GP
-//
-//  Created by Dzianis Shakhalevich on 10/8/22.
-//
+//  Main file.
 
 import SwiftUI
 

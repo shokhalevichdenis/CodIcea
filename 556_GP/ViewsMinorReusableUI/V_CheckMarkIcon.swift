@@ -1,12 +1,6 @@
-//
-//  SwiftUIView.swift
-//  556_GP
-//
-//  Created by Dzianis Shakhalevich on 11/18/22.
-//
+// Icons for correct and wrong answers.
 
 import SwiftUI
-
 
 struct V_CheckMarkIcon: View {
     var animationDuration: Double = 0.75
@@ -17,8 +11,9 @@ struct V_CheckMarkIcon: View {
     @State private var strokeStyle: StrokeStyle = .init(lineWidth: 2, lineCap: .round, lineJoin: .round)
     @State private var size: CGSize = .init(width: 25, height: 25)
     @State private var innerShapeSizeRatio: CGFloat = 1/3
+    @State private var outerTrimEnd: CGFloat = 0
     
-    
+    // Animates icons.
     func animate() {
         withAnimation(.linear(duration: 0.4 * animationDuration)) {
             outerTrimEnd = 1.0
@@ -47,6 +42,7 @@ struct V_CheckMarkIcon: View {
         }
     }
     
+    // Icon for coreect answers.
     struct Checkmark: Shape {
         func path(in rect: CGRect) -> Path {
             let width = rect.size.width
@@ -60,6 +56,7 @@ struct V_CheckMarkIcon: View {
         }
     }
     
+    // Icon for wrong answers.
     struct Cross: Shape {
         func path(in rect: CGRect) -> Path {
             let width = rect.size.width
@@ -72,10 +69,10 @@ struct V_CheckMarkIcon: View {
         }
     }
     
-    @State private var outerTrimEnd: CGFloat = 0
+    // Draws the icons based on answers type.
     var body: some View {
         Group {
-            if (answerStrokeColor == .green) {
+            if (answerStrokeColor == .green.opacity(0.8)) {
                 ZStack {
                     Circle()
                         .trim(from: 0.0, to: outerTrimEnd)

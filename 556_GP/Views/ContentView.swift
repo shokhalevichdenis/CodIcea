@@ -1,9 +1,4 @@
-//
-//  ContentView.swift
-//  556_GP
-//
-//  Created by Dzianis Shakhalevich on 12/12/22.
-//
+// Main view with tabs menu.
 
 import SwiftUI
 
@@ -24,6 +19,7 @@ struct ContentView: View {
                     }
 
             }
+            .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
         }
         .accentColor(.black)

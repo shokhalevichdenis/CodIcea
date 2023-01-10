@@ -1,9 +1,4 @@
-//
-//  V_ReviewPage.swift
-//  556_GP
-//
-//  Created by Dzianis Shakhalevich on 12/15/22.
-//
+// Chart with the wrong answers.
 
 import SwiftUI
 import Charts
@@ -23,9 +18,10 @@ struct V_ReviewPage: View {
                     ForEach(lWrongAnswersForPlot, id: \.self) { t in
                         LineMark(x: .value("Wrong Answers", t[0]), y: .value("Number of Questions", t[1]))
                     }
-                    .foregroundStyle(.red)
+                    .foregroundStyle(.red.opacity(0.8))
                 }
                 .chartLegend(position: .overlay, alignment: .center, spacing: 0)
+                .padding(20)
             }
             .navigationTitle("Results")
             .navigationBarTitleDisplayMode(.inline)

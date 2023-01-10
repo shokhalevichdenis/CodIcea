@@ -1,9 +1,4 @@
-//
-//  ContentView.swift
-//  556_GP
-//
-//  Categories View
-//
+//  The list of categories.
 
 import SwiftUI
 
