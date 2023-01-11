@@ -3,7 +3,7 @@
 import SwiftUI
 
 @main
-struct _556_GPApp: App {
+struct Codicea: App {
     @StateObject private var quizData = QuizViewModel()
     @State var lWrongAnswersForPlot: [[Int]] = wrongAnswersForPlot
     
