@@ -1,10 +1,4 @@
-//
-//  C_Main.swift
-//  556_GP
-//
-//  Created by Dzianis Shakhalevich on 10/25/22.
 //  Contains reusable functions.
-//
 
 import Foundation
 import SwiftUI
@@ -47,34 +41,4 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             print("ERROR: \(error.localizedDescription) creating audioPlayer.")
         }
     }
-}
-
-// Highlights code syntax in a queestion (draft).
-// TODO: Move to a separate module.
-func highlightedText(str: String, searched: [(word: String, color: Color)]) -> Text {
-    guard !str.isEmpty && !searched.isEmpty else {return Text(str)}
-    let parts = str.components(separatedBy: [" "])
-    var result: Text!
-    for part in parts {
-        var found = false
-        for each in searched {
-            if (each.word == part) {
-                if result == nil {
-                    result = Text(part + " ").bold().foregroundColor(each.color)
-                } else {
-                    result = result + Text(part + " ").bold().foregroundColor(each.color)
-                }
-                found = true
-                break
-            }
-        }
-        if !found {
-            if result == nil {
-                result = Text(part + " ")
-            } else {
-                result = result + Text(part + " ")
-            }
-        }
-    }
-    return result ?? Text(str)
 }
