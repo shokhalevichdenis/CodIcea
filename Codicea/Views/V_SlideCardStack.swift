@@ -82,7 +82,9 @@ struct V_SlideCardStack: View {
                                     ForEach(quiz) { question in
                                         VStack{
                                             VStack(alignment: .leading, spacing: 0) {
-                                                Text(question.question)
+//                                                Text(question.question)
+                                                V_QuestionWebView(question: question.question)
+                                                                                                    
                                                 Spacer()
                                                 VStack(alignment: .center){
                                                     ForEach(question.answers) { answer in
@@ -93,6 +95,7 @@ struct V_SlideCardStack: View {
                                                             checkButtonBorColor = .green
                                                             checkButtonFColor = .black
                                                             answerBorderColor = "none"
+                                                            myPlayer
                                                         } label: {
                                                             if (answer.id == pressedButton) {
                                                                 V_CardButtons(strokeColor: Color("LightGray3"), answerBorderColor: $answerBorderColor, text: answer.answer)

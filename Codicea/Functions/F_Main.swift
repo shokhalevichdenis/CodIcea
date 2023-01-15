@@ -36,6 +36,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         do {
             player = try AVAudioPlayer(data: soundFile.data)
             player.play()
+            player.prepareToPlay()
             player.delegate = self
         } catch {
             print("ERROR: \(error.localizedDescription) creating audioPlayer.")

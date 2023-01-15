@@ -1,28 +1,22 @@
 <html>
     <head>
         <title>Questions</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-                        <link rel="stylesheet" href="default.min.css">
-                        <script src="highlight.min.js"></script>
-                        <script>hljs.highlightAll();</script>
-            <link rel="stylesheet" href="style.css">
-            </head>
-    <body>
-        <pre style="width: 100%"><code class="language-python">
-# Sum of natural numbers up to num
-
-num = 16
-
-if num < 0:
-    print("Enter a positive number")
-    else:
-    sum = 0
-    # use while loop to iterate until zero
-    while(num > 0):
-    sum += num
-    num -= 1
-    print("The sum is", sum)
-
-        </code></pre>        
+        <script type="text/javascript">
+            function updateQuestion(question){
+                var ele = document.getElementById('questionText');
+                ele.innerHTML = question;
+            }
+        </script>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="intellij-light.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    </head>
+    <body style="height: fit-content; padding: 0; margin: 0;">
+        <pre style="white-space: pre-wrap;"><code class="language-python" id="questionText">
+        </code></pre>
     </body>
 </html>
+

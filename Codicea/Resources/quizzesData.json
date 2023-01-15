@@ -6,7 +6,7 @@
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "What output will be produced by the code below?\n\nlet oneMillion = 1_000_000\nlet oneThousand = oneMillion / 0_1_0_0_0\n\nprint(oneThousand)",
+        "question": "# What output will be produced by the code below code below?\n\nlet oneMillion = 1_000_000\nlet oneThousand = oneMillion / 0_1_0_0_0\n\nprint(oneThousand)",
         "answers": [
                 {
                     "id": 1,
@@ -35,7 +35,7 @@
         "isAttempted": false,
         "isAnswered": false,
         "isFavorite": true,
-        "question": "How to define a variable 'name'?",
+        "question": "# How to define a variable \"name\"?",
         "answers": [
                 {
                     "id": 1,
