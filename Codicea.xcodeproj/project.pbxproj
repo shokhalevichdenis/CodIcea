@@ -87,7 +87,6 @@
 		AB1D8D86296FD7630096C500 /* gradient-light.min.css in Resources */ = {isa = PBXBuildFile; fileRef = AB1D8B00296FD7620096C500 /* gradient-light.min.css */; };
 		AB1D8D87296FD7630096C500 /* monokai-sublime.min.css in Resources */ = {isa = PBXBuildFile; fileRef = AB1D8B01296FD7620096C500 /* monokai-sublime.min.css */; };
 		AB1D8D88296FD7630096C500 /* an-old-hope.min.css in Resources */ = {isa = PBXBuildFile; fileRef = AB1D8B02296FD7620096C500 /* an-old-hope.min.css */; };
-		AB1D8D89296FD7630096C500 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = AB1D8B03296FD7620096C500 /* highlight.js */; };
 		AB1D8D8A296FD7630096C500 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = AB1D8B04296FD7620096C500 /* package.json */; };
 		AB1D8D8B296FD7630096C500 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = AB1D8B05296FD7620096C500 /* highlight.min.js */; };
 		AB1D8E55296FEA490096C500 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = AB1D8E54296FEA490096C500 /* index.html */; };
@@ -190,7 +189,6 @@
 		AB1D8B00296FD7620096C500 /* gradient-light.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "gradient-light.min.css"; sourceTree = "<group>"; };
 		AB1D8B01296FD7620096C500 /* monokai-sublime.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "monokai-sublime.min.css"; sourceTree = "<group>"; };
 		AB1D8B02296FD7620096C500 /* an-old-hope.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "an-old-hope.min.css"; sourceTree = "<group>"; };
-		AB1D8B03296FD7620096C500 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
 		AB1D8B04296FD7620096C500 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		AB1D8B05296FD7620096C500 /* highlight.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
 		AB1D8E54296FEA490096C500 /* index.html */ = {isa = PBXFileReference; explicitFileType = text.html; name = index.html; path = Codicea/Views/index.html; sourceTree = SOURCE_ROOT; };
@@ -233,7 +231,6 @@
 				AB1D8945296FD7620096C500 /* languages */,
 				AB1D8A06296FD7620096C500 /* README.md */,
 				AB1D8A07296FD7620096C500 /* styles */,
-				AB1D8B03296FD7620096C500 /* highlight.js */,
 				AB1D8B04296FD7620096C500 /* package.json */,
 				AB1D8B05296FD7620096C500 /* highlight.min.js */,
 				AB0B24C429712BAF00E98042 /* style.css */,
@@ -495,7 +492,6 @@
 				AB1D8CB7296FD7620096C500 /* intellij-light.min.css in Resources */,
 				AB1D8D78296FD7630096C500 /* ir-black.min.css in Resources */,
 				AB1D8C93296FD7620096C500 /* brown-paper.min.css in Resources */,
-				AB1D8D89296FD7630096C500 /* highlight.js in Resources */,
 				AB1D8D75296FD7630096C500 /* isbl-editor-light.min.css in Resources */,
 				AB1D8CB9296FD7620096C500 /* magula.min.css in Resources */,
 				AB1D8D8A296FD7630096C500 /* package.json in Resources */,
