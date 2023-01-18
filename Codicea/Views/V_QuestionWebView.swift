@@ -82,7 +82,7 @@ struct V_QuestionWebView: View {
 
 struct V_QuestionWebView_Preview: PreviewProvider {
     static var previews: some View {
-        V_QuestionWebView(question: QuizViewModel().quizzesData[0].question)
+        V_QuestionWebView(question: QuizViewModel().quizzesData[0].questionCode)
             .environmentObject(QuizViewModel())
     }
 }

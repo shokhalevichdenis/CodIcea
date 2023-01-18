@@ -3,16 +3,14 @@
 import SwiftUI
 import Foundation
 
-// Access Shared Defaults Object
-let userDefaults = UserDefaults.standard
-var wrongAnswersForPlot: [[Int]] = userDefaults.object(forKey: "forPlot") as? [[Int]] ?? [[0,0]]
 // Initialize Player
 var myPlayer = AudioPlayer();
 
 struct V_SlideCardStack: View {
-    @Binding var lWrongAnswersForPlot: [[Int]]
     @EnvironmentObject var quizData: QuizViewModel
+    @Environment(\.managedObjectContext) var moc
     
+    let attemptId = UUID() // Unique ID of each quiz attempt
     @State private var iterator: Int = 0 // To iterate through questions.
     @State private var questionIndex: Int = 0 // Question index.
     @State var progressBarWidth = 0.0
@@ -29,9 +27,11 @@ struct V_SlideCardStack: View {
     @State var answerBorderColor: String = "none" // Answer buttons color.
     @State var popUpPaneWidth: Int = 0
     
+    @State var statisticsId: Int64 = 0
+    let userDefaults = UserDefaults.standard
+    
     // Variables holding staistics of an attempted quiz.
-    @State var wrongAnswers: [Int] = userDefaults.object(forKey: "myKey") as? [Int] ?? [] // Stores wrong answers locally.
-    @State var localWrongAnswers: [Int] = []
+    @State var localWrongAnswers: Int = 0
     @State var localCorrectAnswers: Int = 0
     @State var localSkippedAnswers: Int = 0
     
@@ -52,6 +52,30 @@ struct V_SlideCardStack: View {
         checkButtonOffset = cbOffset
         checkButtonString = cbString
         animateMainButton = amButton
+    }
+    
+    func saveUserData(_ isAnswered: Bool, _ isAttempted: Bool) -> Void {
+        let userQuiz = UserQuiz(context: moc)
+        userQuiz.id = Int16(quiz[questionIndex].id)
+        userQuiz.attemptId = attemptId
+        userQuiz.isAnswered = isAnswered
+        userQuiz.isAttempted = isAttempted
+        userQuiz.attemptTS = Date()
+        try? moc.save()
+    }
+    
+    func saveAggrUserData() -> Void {
+        let userQuizAggregated = UserQuizAggregated(context: moc)
+        userQuizAggregated.skippedAnswers = Int16(localSkippedAnswers)
+        userQuizAggregated.correctAnswers = Int16(localCorrectAnswers)
+        userQuizAggregated.wronggAnswers = Int16(localWrongAnswers)
+        userQuizAggregated.attemptTS = Date()
+        userQuizAggregated.attemptId = attemptId
+        userQuizAggregated.id = self.userDefaults.value(forKey: "statisticsIntId") as! Int64
+        
+        statisticsId = self.userDefaults.value(forKey: "statisticsIntId") as! Int64
+        UserDefaults.standard.set(statisticsId + 1, forKey: "statisticsIntId")
+        try? moc.save()
     }
     
     var body: some View {
@@ -79,15 +103,15 @@ struct V_SlideCardStack: View {
                                 }
                                 // Displaying questions and answers
                                 TabView(selection: $iterator) {
-                                    ForEach(quiz) { question in
+                                    ForEach(quiz) { item in
                                         VStack{
                                             VStack(alignment: .leading, spacing: 0) {
-//                                                Text(question.question)
-                                                V_QuestionWebView(question: question.question)
-                                                                                                    
+                                                Text(item.question)
+                                                V_QuestionWebView(question: item.questionCode)
+                                                
                                                 Spacer()
                                                 VStack(alignment: .center){
-                                                    ForEach(question.answers) { answer in
+                                                    ForEach(item.answers) { answer in
                                                         Button {
                                                             pressedButton = answer.id
                                                             checkButtonIsDisabled = false
@@ -95,7 +119,7 @@ struct V_SlideCardStack: View {
                                                             checkButtonBorColor = .green
                                                             checkButtonFColor = .black
                                                             answerBorderColor = "none"
-                                                            myPlayer
+                                                            
                                                         } label: {
                                                             if (answer.id == pressedButton) {
                                                                 V_CardButtons(strokeColor: Color("LightGray3"), answerBorderColor: $answerBorderColor, text: answer.answer)
@@ -145,18 +169,10 @@ struct V_SlideCardStack: View {
                                     checkButtonColor = Color("LightGray")
                                     checkButtonBorColor = Color("LightGray2")
                                     checkButtonFColor = Color("LightGray3")
-                                    if (questionIndex == quiz.count - 1) {
-                                        wrongAnswersForPlot.append([
-                                            wrongAnswersForPlot[wrongAnswersForPlot.count-1][0] + 1,
-                                            localWrongAnswers.count])
-                                        
-                                        userDefaults.set(wrongAnswersForPlot, forKey: "forPlot")
-                                        lWrongAnswersForPlot = wrongAnswersForPlot
-                                        lWrongAnswersForPlot.append([
-                                            wrongAnswersForPlot[lWrongAnswersForPlot.count-1][0] + 1,
-                                            localWrongAnswers.count])
-                                    } else {return}
                                     
+                                    if questionIndex == quiz.count {
+                                        saveAggrUserData()
+                                    }
                                 } label: {
                                     Text("Skip >>")
                                 }
@@ -179,15 +195,7 @@ struct V_SlideCardStack: View {
                                         changeButtonSettings(0, 0, "Check", false)
                                         nextQuestion()
                                     } else if (checkButtonString == "View Results") {
-                                        wrongAnswersForPlot.append([
-                                            wrongAnswersForPlot[wrongAnswersForPlot.count-1][0] + 1,
-                                            localWrongAnswers.count])
-                                        
-                                        userDefaults.set(wrongAnswersForPlot, forKey: "forPlot")
-                                        lWrongAnswersForPlot = wrongAnswersForPlot
-                                        lWrongAnswersForPlot.append([
-                                            wrongAnswersForPlot[lWrongAnswersForPlot.count-1][0] + 1,
-                                            localWrongAnswers.count])
+                                        saveAggrUserData()
                                         nextQuestion()
                                     } else {
                                         if (questionIndex < quiz.count - 1) {
@@ -195,7 +203,9 @@ struct V_SlideCardStack: View {
                                             let impactMed = UIImpactFeedbackGenerator(style: .medium)
                                             impactMed.impactOccurred()
                                         } else {
-                                            localWrongAnswers.append(quiz[questionIndex].id)
+                                            myPlayer.playSong(songFileName: "wrng")
+                                            localWrongAnswers += 1
+                                            saveUserData(false, true)
                                             changeButtonSettings(1, 20, "View Results", true)
                                             checkButtonBorColor = .green.opacity(0.8)
                                             checkButtonColor = .white
@@ -211,23 +221,13 @@ struct V_SlideCardStack: View {
                                     if (checkButtonString == "Next Question" && answerBorderColor == "correct") {
                                         myPlayer.playSong(songFileName: "crct")
                                         localCorrectAnswers += 1
+                                        saveUserData(true, true)
                                     } else if (checkButtonString == "Next Question" && answerBorderColor == "wrong") {
                                         myPlayer.playSong(songFileName: "wrng")
                                         checkButtonColor = .white
                                         checkButtonBorColor = .orange.opacity(0.8)
-                                        localWrongAnswers.append(quiz[questionIndex].id)
-                                        
-                                        // Saving unique wrong answers
-                                        var isDuplicate = false
-                                        for id in wrongAnswers {
-                                            if (id == quiz[questionIndex].id) {
-                                                isDuplicate = true
-                                            } else {continue}
-                                        }
-                                        if !isDuplicate {
-                                            wrongAnswers.append(quiz[questionIndex].id)
-                                        } else {return}
-                                        userDefaults.set(wrongAnswers, forKey: "myKey")
+                                        localWrongAnswers += 1
+                                        saveUserData(false, true)
                                     }
                                     
                                 } label: {
@@ -290,7 +290,7 @@ struct V_SlideCardStack: View {
                     }
                 }
             } else {
-                V_ResultsPage(lWrongAnswersForPlot: $lWrongAnswersForPlot, wrongAnswers: localWrongAnswers.count, localCorrectAnswers: localCorrectAnswers, localSkippedAnswers: localSkippedAnswers, quiz: quiz, title: title)
+                V_ResultsPage(wrongAnswers: localWrongAnswers, localCorrectAnswers: localCorrectAnswers, localSkippedAnswers: localSkippedAnswers, quiz: quiz, title: title)
             }
         }
     }
@@ -298,7 +298,7 @@ struct V_SlideCardStack: View {
 
 struct V_SlideCardStack_Previews: PreviewProvider {
     static var previews: some View {
-        V_SlideCardStack(lWrongAnswersForPlot: Binding.constant([[0,0]]), quiz: QuizViewModel().quizzesData, title: "Variables", answerBorderColor: "none")
+        V_SlideCardStack(quiz: QuizViewModel().quizzesData, title: "Variables", answerBorderColor: "none")
             .environmentObject(QuizViewModel())
     }
 }

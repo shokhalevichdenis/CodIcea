@@ -12,10 +12,8 @@ struct Quiz: Hashable, Codable, Identifiable {
     var id: Int
     var language: String
     var category: String
-    var isAttempted: Bool
-    var isAnswered: Bool
-    var isFavorite: Bool
     var question: String
+    var questionCode: String
     var correctAnswer: Int
     private var imageName: String
     var image: Image {

@@ -3,7 +3,6 @@
 import SwiftUI
 
 struct V_ResultsPage: View {
-    @Binding var lWrongAnswersForPlot: [[Int]]
     var wrongAnswers: Int = 0
     var localCorrectAnswers: Int = 0
     var localSkippedAnswers: Int = 0
@@ -46,12 +45,12 @@ struct V_ResultsPage: View {
                 Divider()
                 Spacer()
                 NavigationLink {
-                    ContentView(lWrongAnswersForPlot: $lWrongAnswersForPlot)
+                    ContentView()
                 } label: {
                     StartPageButton(labelValue: "Home", imageValue: "house")
                 }
                 NavigationLink {
-                    V_SlideCardStack(lWrongAnswersForPlot: $lWrongAnswersForPlot, quiz: quiz, title: title)
+                    V_SlideCardStack(quiz: quiz, title: title)
                 } label: {
                     StartPageButton(labelValue: "Another \(title) Quiz", imageValue: "arrow.triangle.2.circlepath.circle")
                 }
@@ -78,6 +77,6 @@ struct V_ResultsPage: View {
 
 struct V_ResultsPage_Previews: PreviewProvider {
     static var previews: some View {
-        V_ResultsPage(lWrongAnswersForPlot: Binding.constant([[]]), quiz: QuizViewModel().quizzesData, title: "variables")
+        V_ResultsPage(quiz: QuizViewModel().quizzesData, title: "variables")
     }
 }

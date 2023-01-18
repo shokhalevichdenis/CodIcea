@@ -3,7 +3,6 @@
 import SwiftUI
 
 struct V_MainPage: View {
-    @Binding var lWrongAnswersForPlot: [[Int]]
     var body: some View {
         let languages: [[String]] = [["Swift", "swift"], ["JavaScript", "heart.fill"], ["Python", "scribble"], ["C#", "number"], ["C++", "plusminus"], ["PHP", "figure.fall"], ["Java", "cup.and.saucer"]]
         NavigationStack{
@@ -13,7 +12,7 @@ struct V_MainPage: View {
                     .multilineTextAlignment(.leading)
                 ScrollView{
                     ForEach(languages, id: \.self) { language in
-                        NavigationLink(destination: V_QuizList(chosenLanguage: language[0], lWrongAnswersForPlot: self.$lWrongAnswersForPlot)) {
+                        NavigationLink(destination: V_QuizList(chosenLanguage: language[0])) {
                             StartPageButton(labelValue: language[0], imageValue: language[1])
                         }
                     }
@@ -66,7 +65,7 @@ struct StartPageButton: View {
 
 struct V_MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        V_MainPage(lWrongAnswersForPlot: Binding.constant([[0,0]]))
+        V_MainPage()
             .environmentObject(QuizViewModel())
     }
 }

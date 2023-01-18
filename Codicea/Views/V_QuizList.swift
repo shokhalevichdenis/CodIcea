@@ -8,7 +8,6 @@ struct V_QuizList: View {
     @EnvironmentObject var quizData: QuizViewModel
     @State var chosenLanguage: String = ""
     @State var searchText: String = ""
-    @Binding var lWrongAnswersForPlot: [[Int]]
     
     var body: some View {
         NavigationStack {
@@ -19,7 +18,7 @@ struct V_QuizList: View {
             List {
                 ForEach(searchResults, id: \.self) { category in
                     NavigationLink {
-                        V_SlideCardStack(lWrongAnswersForPlot: $lWrongAnswersForPlot, quiz: quizByValue(category, quiz: quizData.quizzesData), title: category)
+                        V_SlideCardStack(quiz: quizByValue(category, quiz: quizData.quizzesData), title: category)
                     } label: {
                         V_QuizItem(category: category)
                     }
@@ -57,7 +56,7 @@ struct V_QuizList: View {
 
 struct V_QuizList_Previews: PreviewProvider {
     static var previews: some View {
-        V_QuizList(lWrongAnswersForPlot: Binding.constant([[0,0]]))
+        V_QuizList()
             .environmentObject(QuizViewModel())
     }
 }

@@ -106,6 +106,8 @@
 		ABBA4AF6291B848100F4B1D4 /* V_SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA4AF5291B848100F4B1D4 /* V_SplashScreen.swift */; };
 		ABD119EE2927E75B0000B886 /* V_CheckMarkIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD119ED2927E75B0000B886 /* V_CheckMarkIcon.swift */; };
 		ABD119F02927FC060000B886 /* V_CardButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD119EF2927FC060000B886 /* V_CardButtons.swift */; };
+		ABDA41622974D61000B24EC3 /* UserQuiz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ABDA41602974D61000B24EC3 /* UserQuiz.xcdatamodeld */; };
+		ABDA41642974D6CA00B24EC3 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA41632974D6CA00B24EC3 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -210,6 +212,8 @@
 		ABBA4AF5291B848100F4B1D4 /* V_SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_SplashScreen.swift; sourceTree = "<group>"; };
 		ABD119ED2927E75B0000B886 /* V_CheckMarkIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_CheckMarkIcon.swift; sourceTree = "<group>"; };
 		ABD119EF2927FC060000B886 /* V_CardButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_CardButtons.swift; sourceTree = "<group>"; };
+		ABDA41612974D61000B24EC3 /* Quiz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quiz.xcdatamodel; sourceTree = "<group>"; };
+		ABDA41632974D6CA00B24EC3 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +400,8 @@
 		AB944ECC28F24407002C3DDA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ABDA41602974D61000B24EC3 /* UserQuiz.xcdatamodeld */,
+				ABDA41632974D6CA00B24EC3 /* DataController.swift */,
 				AB944ED128F24743002C3DDA /* Quiz.swift */,
 				AB3044F62925C981002B70DD /* QuizViewModel.swift */,
 			);
@@ -574,10 +580,12 @@
 			files = (
 				AB944ECA28F24205002C3DDA /* V_SlideCardStack.swift in Sources */,
 				AB2D02A22925DFCC00743FBE /* V_ReusableUI.swift in Sources */,
+				ABDA41622974D61000B24EC3 /* UserQuiz.xcdatamodeld in Sources */,
 				AB944ED228F24743002C3DDA /* Quiz.swift in Sources */,
 				AB3044F72925C981002B70DD /* QuizViewModel.swift in Sources */,
 				ABD119EE2927E75B0000B886 /* V_CheckMarkIcon.swift in Sources */,
 				ABD119F02927FC060000B886 /* V_CardButtons.swift in Sources */,
+				ABDA41642974D6CA00B24EC3 /* DataController.swift in Sources */,
 				AB9668B6294ABAF50006359B /* V_ResultsPage.swift in Sources */,
 				AB9EDAB2296FD1D200A96F54 /* V_QuestionWebView.swift in Sources */,
 				AB944E9E28F24113002C3DDA /* V_QuizList.swift in Sources */,
@@ -799,6 +807,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ABDA41602974D61000B24EC3 /* UserQuiz.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ABDA41612974D61000B24EC3 /* Quiz.xcdatamodel */,
+			);
+			currentVersion = ABDA41612974D61000B24EC3 /* Quiz.xcdatamodel */;
+			path = UserQuiz.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AB944E9028F24112002C3DDA /* Project object */;
 }

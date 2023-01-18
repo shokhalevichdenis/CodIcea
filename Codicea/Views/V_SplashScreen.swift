@@ -7,7 +7,6 @@ struct V_SplashScreen: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     @State private var offsetY: CGFloat = 15
-    @Binding var lWrongAnswersForPlot: [[Int]]
     
     // Changes size and opcacity for animation.
     func animateSplash() {
@@ -20,7 +19,7 @@ struct V_SplashScreen: View {
     var body: some View {
         // Sends to the main page after the splash.
         if isActive {
-            ContentView(lWrongAnswersForPlot: $lWrongAnswersForPlot)
+            ContentView()
         } else {
             ZStack {
                 Group {
@@ -83,7 +82,7 @@ struct V_SplashScreen: View {
 
 struct V_SplashScreen_Previews: PreviewProvider {
     static var previews: some View {
-        V_SplashScreen(lWrongAnswersForPlot: Binding.constant([[0,0]]))
+        V_SplashScreen()
     }
 }
 

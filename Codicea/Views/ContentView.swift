@@ -2,18 +2,16 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
-    @Binding var lWrongAnswersForPlot: [[Int]]
-
+    
     var body: some View {
         NavigationStack{
             TabView() {
-                V_MainPage(lWrongAnswersForPlot: $lWrongAnswersForPlot)
+                V_MainPage()
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
-                V_ReviewPage(lWrongAnswersForPlot: $lWrongAnswersForPlot)
+                V_ReviewPage()
                     .tabItem {
                         Label("Review", systemImage: "exclamationmark.arrow.circlepath")
                     }
@@ -28,8 +26,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(lWrongAnswersForPlot: Binding.constant([[0,0]]))
+        ContentView()
             .environmentObject(QuizViewModel())
+        
     }
 }
 
